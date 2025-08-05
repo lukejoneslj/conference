@@ -906,21 +906,22 @@ export default function ConferenceHub() {
                     <CardContent>
                       <div className="space-y-4">
                         {data.sessions.map((session) => (
-                          <div key={session.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                          <div key={session.id} className={`border rounded-lg p-4 hover:shadow-md transition-shadow ${
+                            session.type === 'concurrent' ? 'ml-4 border-l-4 border-l-blue-200 bg-blue-50/30' : ''
+                          }`}>
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
-                                <div className="flex items-center gap-2 mb-2">
-                                  <Badge className={getSessionTypeColor(session.type)}>
-                                    {session.type}
-                                  </Badge>
+                                <div className="flex items-center gap-4 mb-2">
                                   <span className="text-sm text-gray-600 flex items-center gap-1">
                                     <Clock className="w-4 h-4" />
                                     {session.time}
                                   </span>
-                                  <span className="text-sm text-gray-600 flex items-center gap-1">
-                                    <MapPin className="w-4 h-4" />
-                                    {session.room}
-                                  </span>
+                                  {session.room && (
+                                    <span className="text-sm text-gray-600 flex items-center gap-1">
+                                      <MapPin className="w-4 h-4" />
+                                      {session.room}
+                                    </span>
+                                  )}
                                 </div>
                                 <h3 className="font-semibold text-gray-900 mb-1 cursor-pointer hover:text-blue-600" 
                                     onClick={() => session.speaker && handleSpeakerClick(speakers.find(s => session.speaker?.includes(s.name)) || speakers[0])}>
