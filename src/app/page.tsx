@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Combobox } from '@/components/ui/combobox'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { 
   Calendar, MapPin, Clock, Users, Search, 
   Heart, Share2, ChevronRight, Car, 
@@ -827,22 +828,7 @@ function SpeakerModal({ speaker, open, onOpenChange }: {
   )
 }
 
-const getSessionTypeColor = (type: string) => {
-  switch (type) {
-    case 'keynote': return 'bg-blue-100 text-blue-800 border-blue-200'
-    case 'session': return 'bg-green-100 text-green-800 border-green-200'
-    case 'workshop': return 'bg-purple-100 text-purple-800 border-purple-200'
-    case 'panel': return 'bg-orange-100 text-orange-800 border-orange-200'
-    case 'break': return 'bg-gray-100 text-gray-800 border-gray-200'
-    case 'social': return 'bg-pink-100 text-pink-800 border-pink-200'
-    case 'roundtable': return 'bg-yellow-100 text-yellow-800 border-yellow-200'
-    case 'breakout': return 'bg-indigo-100 text-indigo-800 border-indigo-200'
-    case 'concurrent': return 'bg-teal-100 text-teal-800 border-teal-200'
-    case 'announcement': return 'bg-red-100 text-red-800 border-red-200'
-    case 'registration': return 'bg-slate-100 text-slate-800 border-slate-200'
-    default: return 'bg-gray-100 text-gray-800 border-gray-200'
-  }
-}
+
 
 // Lunch table topics
 const lunchTableTopics = [
@@ -860,6 +846,7 @@ export default function ConferenceHub() {
   const [showSignIn, setShowSignIn] = useState(false)
   const [selectedSpeaker, setSelectedSpeaker] = useState<typeof speakers[0] | null>(null)
   const [showSpeakerModal, setShowSpeakerModal] = useState(false)
+  const [selectedDay, setSelectedDay] = useState<string>('all')
   
   const { user, signOut, registerForSession, unregisterFromSession, registerForLunchTable, toggleNotifications, sessionData } = useAuth()
 
@@ -1088,18 +1075,50 @@ export default function ConferenceHub() {
               <CardHeader>
                 <CardTitle>Breakout Session Registration</CardTitle>
                 <CardDescription>
-                  Register for up to 3 breakout sessions. Limited capacity available.
+                  Register for up to 3 breakout sessions per day. Limited capacity available.
                   {user && (
-                    <span className="block mt-2 text-blue-600">
-                      You are registered for {user.registeredSessions.length}/3 sessions
-                    </span>
+                    <div className="mt-2 space-y-1">
+                      <div className="text-blue-600">
+                        Monday: {user.registeredSessions.filter(id => {
+                          const session = Object.values(scheduleData).flatMap(day => day.sessions).find(s => s.id.toString() === id);
+                          return session && [14, 15, 16, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30, 31, 32].includes(session.id);
+                        }).length}/3 sessions
+                      </div>
+                      <div className="text-blue-600">
+                        Tuesday: {user.registeredSessions.filter(id => {
+                          const session = Object.values(scheduleData).flatMap(day => day.sessions).find(s => s.id.toString() === id);
+                          return session && [44, 45, 46, 47, 49, 50, 51, 52].includes(session.id);
+                        }).length}/3 sessions
+                      </div>
+                    </div>
                   )}
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                <div className="mb-6">
+                  <label className="text-sm font-medium mb-2 block">Filter by Day</label>
+                  <Select value={selectedDay} onValueChange={setSelectedDay}>
+                    <SelectTrigger className="w-full max-w-xs">
+                      <SelectValue placeholder="Select a day" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Days</SelectItem>
+                      <SelectItem value="monday">Monday, September 29</SelectItem>
+                      <SelectItem value="tuesday">Tuesday, September 30</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {Object.values(scheduleData).flatMap(day => 
-                    day.sessions.filter(session => session.isBreakout)
+                  {Object.entries(scheduleData).flatMap(([dayKey, day]) => 
+                    day.sessions
+                      .filter(session => session.isBreakout)
+                      .filter(() => {
+                        if (selectedDay === 'all') return true;
+                        if (selectedDay === 'monday') return dayKey === 'day2';
+                        if (selectedDay === 'tuesday') return dayKey === 'day3';
+                        return true;
+                      })
+                      .map(session => ({ ...session, dayKey, dayDate: day.date }))
                   ).map((session) => {
                     const isRegistered = user?.registeredSessions.includes(session.id.toString())
                     const firebaseSession = sessionData[session.id.toString()]
@@ -1111,9 +1130,9 @@ export default function ConferenceHub() {
                       <Card key={session.id} className="relative">
                         <CardHeader className="pb-3">
                           <div className="flex justify-between items-start">
-                            <Badge className={getSessionTypeColor(session.type)}>
-                              Breakout Session
-                            </Badge>
+                            <div className="text-sm text-blue-600 font-medium">
+                              {session.dayDate}
+                            </div>
                             <div className="text-right text-sm text-gray-600">
                               {currentRegistered}/{currentCapacity} registered
                             </div>
@@ -1164,7 +1183,29 @@ export default function ConferenceHub() {
                               ) : (
                                 <Button 
                                   size="sm"
-                                  disabled={isFull || (user ? user.registeredSessions.length >= 3 : false)}
+                                  disabled={isFull || (user ? (() => {
+                                    // Check per-day registration limits
+                                    const mondaySessionIds = [14, 15, 16, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30, 31, 32];
+                                    const tuesdaySessionIds = [44, 45, 46, 47, 49, 50, 51, 52];
+                                    
+                                    if (mondaySessionIds.includes(session.id)) {
+                                      const mondayRegistrations = user.registeredSessions.filter(id => {
+                                        const sessionObj = Object.values(scheduleData).flatMap(day => day.sessions).find(s => s.id.toString() === id);
+                                        return sessionObj && mondaySessionIds.includes(sessionObj.id);
+                                      });
+                                      return mondayRegistrations.length >= 3;
+                                    }
+                                    
+                                    if (tuesdaySessionIds.includes(session.id)) {
+                                      const tuesdayRegistrations = user.registeredSessions.filter(id => {
+                                        const sessionObj = Object.values(scheduleData).flatMap(day => day.sessions).find(s => s.id.toString() === id);
+                                        return sessionObj && tuesdaySessionIds.includes(sessionObj.id);
+                                      });
+                                      return tuesdayRegistrations.length >= 3;
+                                    }
+                                    
+                                    return false;
+                                  })() : false)}
                                   onClick={() => handleBreakoutRegistration(session.id.toString())}
                                 >
                                   {isFull ? 'Full' : 'Register'}
