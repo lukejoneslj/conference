@@ -1,6 +1,14 @@
 {
-  "name": "conference",
-  "version": "0.1.0",
+  "name": "atns-2025-conference",
+  "version": "1.0.0",
+  "description": "ATNS 2025 Conference - Association for the Treatment of Neuroplastic Symptoms Conference App",
+  "author": "Association for the Treatment of Neuroplastic Symptoms",
+  "keywords": ["ATNS", "neuroplastic symptoms", "medical conference", "Boulder", "2025"],
+  "homepage": "https://atns2025.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukejoneslj/conference.git"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
