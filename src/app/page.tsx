@@ -1322,13 +1322,16 @@ export default function ConferenceHub() {
                                   </span>
                                   )}
                                 </div>
-                                <h3 className="font-semibold text-gray-900 mb-1 cursor-pointer hover:text-blue-600" 
-                                    onClick={() => session.speaker && handleSpeakerClick(speakers.find(s => session.speaker?.includes(s.name)) || speakers[0])}>
+                                <h3 className="font-semibold text-gray-900 mb-1">
                                   {session.title}
                                 </h3>
                                 {session.speaker && (
                                   <p className="text-sm text-blue-600 mb-2 flex items-center gap-1 cursor-pointer hover:underline"
-                                     onClick={() => handleSpeakerClick(speakers.find(s => session.speaker?.includes(s.name)) || speakers[0])}>
+                                     onClick={(e) => {
+                                       e.preventDefault()
+                                       e.stopPropagation()
+                                       handleSpeakerClick(speakers.find(s => session.speaker?.includes(s.name)) || speakers[0])
+                                     }}>
                                     <Mic className="w-4 h-4" />
                                     {session.speaker}
                                   </p>
@@ -1339,10 +1342,10 @@ export default function ConferenceHub() {
                                 {session.favorite && (
                                   <Heart className="w-5 h-5 text-red-500 fill-current" />
                                 )}
-                                <Button size="sm" variant="outline">
+                                <Button size="sm" variant="outline" onClick={(e) => e.stopPropagation()}>
                                   <Bookmark className="w-4 h-4" />
                                 </Button>
-                                <Button size="sm" variant="outline">
+                                <Button size="sm" variant="outline" onClick={(e) => e.stopPropagation()}>
                                   <Share2 className="w-4 h-4" />
                                 </Button>
                               </div>
