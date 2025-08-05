@@ -824,10 +824,7 @@ function SpeakerModal({ speaker, open, onOpenChange }: {
               </div>
             </div>
           )}
-          <div>
-            <h4 className="font-semibold mb-2">Sessions</h4>
-            <Badge>{speaker.sessions || 1} session{(speaker.sessions || 1) !== 1 ? 's' : ''}</Badge>
-          </div>
+
         </div>
       </DialogContent>
     </Dialog>
@@ -1368,7 +1365,7 @@ export default function ConferenceHub() {
                           const session = Object.values(scheduleData).flatMap(day => day.sessions).find(s => s.id.toString() === id);
                           return session && [14, 15, 16, 17, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30, 31, 32].includes(session.id);
                         }).length}/3 sessions
-                      </div>
+          </div>
                       <div className="text-blue-600">
                         Tuesday: {user.registeredSessions.filter(id => {
                           const session = Object.values(scheduleData).flatMap(day => day.sessions).find(s => s.id.toString() === id);
@@ -1544,21 +1541,18 @@ export default function ConferenceHub() {
                               className="object-cover"
                             />
                             <AvatarFallback className="text-lg font-semibold bg-blue-100 text-blue-600">
-                              {speaker.initials}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex-1">
-                            <h4 className="font-medium text-gray-900">{speaker.name}</h4>
-                            <p className="text-sm text-gray-600">{speaker.title}</p>
+                          {speaker.initials}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <h4 className="font-medium text-gray-900">{speaker.name}</h4>
+                        <p className="text-sm text-gray-600">{speaker.title}</p>
                             {speaker.subtitle && (
                               <p className="text-xs text-blue-600">{speaker.subtitle}</p>
                             )}
-                            <Badge variant="secondary" className="mt-1">
-                              {speaker.sessions || 1} session{(speaker.sessions || 1) !== 1 ? 's' : ''}
-                            </Badge>
-                          </div>
+                      </div>
                           <ChevronRight className="w-4 h-4 text-gray-400" />
-                        </div>
+                      </div>
                       </CardContent>
                     </Card>
                   ))}
@@ -1624,7 +1618,7 @@ export default function ConferenceHub() {
                         <p className="text-sm text-gray-600">
                           {user.notifications ? 'You will receive live updates' : 'Notifications are disabled'}
                         </p>
-                      </div>
+                </div>
                       <Button 
                         onClick={toggleNotifications}
                         variant={user.notifications ? "default" : "outline"}
@@ -1641,7 +1635,7 @@ export default function ConferenceHub() {
                           </>
                         )}
                 </Button>
-                    </div>
+                  </div>
                   ) : (
                     <div className="text-center p-8 border rounded-lg">
                       <Bell className="w-12 h-12 text-gray-400 mx-auto mb-4" />
@@ -1653,7 +1647,7 @@ export default function ConferenceHub() {
                         <User className="w-4 h-4 mr-2" />
                         Sign In
                       </Button>
-                    </div>
+                  </div>
                   )}
                   
                   <div>
@@ -1662,11 +1656,11 @@ export default function ConferenceHub() {
                       <div className="flex items-center gap-2 text-sm">
                         <MessageSquare className="w-4 h-4 text-blue-500" />
                         Session start reminders
-                      </div>
+                  </div>
                       <div className="flex items-center gap-2 text-sm">
                         <MessageSquare className="w-4 h-4 text-blue-500" />
                         Room changes and updates
-                      </div>
+                </div>
                       <div className="flex items-center gap-2 text-sm">
                         <MessageSquare className="w-4 h-4 text-blue-500" />
                         Important announcements
