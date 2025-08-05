@@ -1042,9 +1042,11 @@ function SessionDetailsModal({ session, open, onOpenChange }: {
   open: boolean, 
   onOpenChange: (open: boolean) => void 
 }) {
+  console.log('SessionDetailsModal rendered:', { session, open })
   if (!session) return null
 
   const details = presentationDetails[session.id.toString()]
+  console.log('Session details found:', details)
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -1053,6 +1055,9 @@ function SessionDetailsModal({ session, open, onOpenChange }: {
           <DialogTitle className="text-xl font-bold text-gray-900 pr-8">
             {session.title}
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Session details including presentation summary, learning objectives, and speaker information
+          </DialogDescription>
           <div className="flex items-center gap-4 text-sm text-gray-600 mt-2">
             <span className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
@@ -1159,6 +1164,7 @@ export default function ConferenceHub() {
   }
 
   const handleSessionClick = (session: SessionType) => {
+    console.log('Session clicked:', session)
     setSelectedSession(session)
     setShowSessionModal(true)
   }
@@ -1297,7 +1303,11 @@ export default function ConferenceHub() {
                         {data.sessions.map((session) => (
                           <div key={session.id} className={`border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer ${
                             session.type === 'concurrent' ? 'ml-4 border-l-4 border-l-blue-200 bg-blue-50/30' : ''
-                          }`} onClick={() => handleSessionClick(session)}>
+                          }`} onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            handleSessionClick(session)
+                          }}>
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
                                 <div className="flex items-center gap-4 mb-2">
