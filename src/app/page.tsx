@@ -899,13 +899,7 @@ export default function ConferenceHub() {
     }
   }
 
-  const currentSession = {
-    title: "Session #1: Hand to Heart: An Opportunity for Healing with Neuroplastic Symptoms",
-    speaker: "Monica Fitzgerald, PhD + Rita Gupta, DO MPA",
-    room: "Main Auditorium",
-    timeRemaining: "23 minutes",
-    nextSession: "Break"
-  }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -944,25 +938,6 @@ export default function ConferenceHub() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {/* Current Session Alert */}
-        <Card className="mb-6 border-l-4 border-l-green-500 bg-green-50">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold text-green-900">Current Session</h3>
-                <p className="text-green-800">{currentSession.title}</p>
-                <p className="text-sm text-green-700">
-                  {currentSession.speaker} • {currentSession.room}
-                </p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-green-700">Time Remaining</p>
-                <p className="text-2xl font-bold text-green-900">{currentSession.timeRemaining}</p>
-                <p className="text-xs text-green-600">Next: {currentSession.nextSession}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Main Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
