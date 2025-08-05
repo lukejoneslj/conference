@@ -20,7 +20,7 @@ import {
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 
-// Enhanced schedule data with breakout sessions
+// Complete 3-day conference schedule
 const scheduleData = {
   'day1': {
     date: 'Sunday, September 28, 2025',
@@ -30,7 +30,7 @@ const scheduleData = {
         time: '12:30 PM',
         title: 'Conference Check-In Opens',
         type: 'registration',
-        room: 'Main Lobby',
+        room: 'JCC Lobby',
         speaker: null,
         description: 'Registration and badge pickup',
         favorite: false,
@@ -41,7 +41,7 @@ const scheduleData = {
         time: '1:50 PM',
         title: 'Welcome Announcement',
         type: 'announcement',
-        room: 'Main Auditorium',
+        room: 'Levin Hall',
         speaker: null,
         description: 'Official conference welcome',
         favorite: false,
@@ -52,9 +52,53 @@ const scheduleData = {
         time: '2:00 PM - 3:00 PM',
         title: 'Session #1: Hand to Heart: An Opportunity for Healing with Neuroplastic Symptoms',
         type: 'session',
-        room: 'Main Auditorium',
+        room: 'Levin Hall',
         speaker: 'Monica Fitzgerald, PhD + Rita Gupta, DO MPA',
-        description: 'An opportunity for healing with neuroplastic symptoms',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 4,
+        time: '3:00 PM - 3:15 PM',
+        title: 'Break',
+        type: 'break',
+        room: '',
+        speaker: null,
+        description: '15 minute break',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 5,
+        time: '3:15 PM - 4:15 PM',
+        title: 'Session #2: New research in neuroplastic symptoms',
+        type: 'session',
+        room: 'Levin Hall',
+        speaker: 'Howard Schubiner, MD + Dan Kaufmann, PHD + Paul Hansma, PHD + Marjorie Heule, MS + Lisa E. Baranik, PhD',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 6,
+        time: '4:15 PM',
+        title: 'Closing Remarks',
+        type: 'announcement',
+        room: 'Levin Hall',
+        speaker: null,
+        description: 'Day 1 closing remarks',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 7,
+        time: '4:30 PM - 6:00 PM',
+        title: 'Welcome Reception',
+        type: 'social',
+        room: 'JCC Lobby',
+        speaker: null,
+        description: 'Welcome reception and networking',
         favorite: false,
         isBreakout: false
       }
@@ -65,42 +109,194 @@ const scheduleData = {
     sessions: [
       {
         id: 11,
+        time: '8:00 AM',
+        title: 'Breakfast & Interest Group Session',
+        type: 'social',
+        room: 'Gym',
+        speaker: null,
+        description: 'Breakfast and networking',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 12,
+        time: '9:00 AM - 10:00 AM',
+        title: 'Session #3: Pain Reprocessing Therapy, Advanced Skills: Working With Emotions and the Self',
+        type: 'session',
+        room: 'Levin Hall',
+        speaker: 'Christie Uipi, LCSW + Vanessa Blackstone, MSW, ACSW',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 13,
+        time: '10:00 AM - 10:15 AM',
+        title: 'Break',
+        type: 'break',
+        room: '',
+        speaker: null,
+        description: '15 minute break',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 14,
         time: '10:15 AM - 11:15 AM',
-        title: 'Breakout #1: Finding Common Threads: Using Experiential Mind/Body Approaches to Address Sexual Challenges',
-        type: 'breakout',
-        room: 'Room A',
+        title: 'Session #4A: Finding Common Threads: Using Experiential Mind/Body Approaches to Address Sexual Challenges',
+        type: 'concurrent',
+        room: 'Levin Hall',
         speaker: 'Lillian Bailey, MS, LMFT, CST',
-        description: 'Experiential mind/body approaches for sexual challenges',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 50,
+        registered: 0
+      },
+      {
+        id: 15,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #4B: Fundamentals of Neuroplastic Pain Syndrome',
+        type: 'concurrent',
+        room: 'L130',
+        speaker: 'David Schechter, MD',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 40,
+        registered: 0
+      },
+      {
+        id: 16,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #4C: Embody Your Message',
+        type: 'concurrent',
+        room: 'F168',
+        speaker: 'Camille Thoman',
+        description: '50 minutes presentation + 10 minute Q&A',
         favorite: false,
         isBreakout: true,
         capacity: 30,
         registered: 0
       },
       {
-        id: 12,
+        id: 17,
         time: '10:15 AM - 11:15 AM',
-        title: 'Breakout #2: Fundamentals of Neuroplastic Pain Syndrome',
-        type: 'breakout',
-        room: 'Room B',
-        speaker: 'David Schechter, MD',
-        description: 'Fundamentals of neuroplastic pain syndrome',
+        title: 'Session #4D: Practical Somatics',
+        type: 'concurrent',
+        room: 'F169',
+        speaker: 'Karden Rabin + Alexander Rosan',
+        description: '50 minutes presentation + 10 minute Q&A',
         favorite: false,
         isBreakout: true,
-        capacity: 25,
+        capacity: 30,
+        registered: 0
+      }
+    ]
+  },
+  'day3': {
+    date: 'Tuesday, September 30, 2025',
+    sessions: [
+      {
+        id: 41,
+        time: '8:00 AM',
+        title: 'Breakfast & Interest Group Session',
+        type: 'social',
+        room: 'JCC',
+        speaker: null,
+        description: 'Breakfast and networking',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 42,
+        time: '9:00 AM - 10:00 AM',
+        title: 'Session #9: Feeling Safe Enough to Heal: Treating Trauma, Addiction and Chronic Pain',
+        type: 'session',
+        room: 'Levin Hall',
+        speaker: 'Les Aria, PhD',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 43,
+        time: '10:00 AM - 10:15 AM',
+        title: 'Break',
+        type: 'break',
+        room: '',
+        speaker: null,
+        description: '15 minute break',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 44,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10A: An Experiential Emotion-Focused Approach to Understanding and Treating Psychogenic Non-Epileptic Attacks (PNEA)',
+        type: 'concurrent',
+        room: 'Levin Hall',
+        speaker: 'William H. Watson, PhD',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 50,
         registered: 0
       },
       {
-        id: 13,
-        time: '10:15 AM - 11:15 AM',
-        title: 'Breakout #3: Embody Your Message',
-        type: 'breakout',
-        room: 'Room C',
-        speaker: 'Camille Thoman',
-        description: 'Embodying your therapeutic message',
+        id: 45,
+        time: '1:45 PM - 2:45 PM',
+        title: 'Session #12: Stigma as a Stressor: How Anti-Fat Bias Influences Neuroplastic Symptoms',
+        type: 'session',
+        room: 'Levin Hall',
+        speaker: 'Deb Malkin, Amy Schere, MSW, LCSWA, PT, DPT, Rachel Gofman, PT, DPT',
+        description: '50 minutes presentation + 10 minute Q&A',
         favorite: false,
-        isBreakout: true,
-        capacity: 20,
-        registered: 0
+        isBreakout: false
+      },
+      {
+        id: 46,
+        time: '3:00 PM - 4:00 PM',
+        title: 'Session #13: Neuroplastic Symptoms of the Ear: Tinnitus, Sound Sensitivity and Dizziness',
+        type: 'session',
+        room: 'Levin Hall',
+        speaker: 'Yonit Arthur, AuD, & Marcia Dewey, AuD',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 47,
+        time: '4:00 PM',
+        title: 'David Clarke Wrap up, presidential address',
+        type: 'keynote',
+        room: 'Levin Hall',
+        speaker: 'David Clarke',
+        description: 'Presidential address and conference wrap-up',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 48,
+        time: '4:30 PM',
+        title: 'Closing Remarks + Zumba',
+        type: 'social',
+        room: 'Levin Hall',
+        speaker: null,
+        description: 'Final closing remarks and Zumba session',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 49,
+        time: '5:00 PM - 6:30 PM',
+        title: 'Happy Hour Gathering',
+        type: 'social',
+        room: 'Offsite',
+        speaker: null,
+        description: 'Final happy hour gathering - End of Conference',
+        favorite: false,
+        isBreakout: false
       }
     ]
   }
@@ -456,9 +652,10 @@ export default function ConferenceHub() {
           {/* Schedule Tab */}
           <TabsContent value="schedule" className="mt-6">
             <Tabs defaultValue="day1" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="day1">Day 1 (Today)</TabsTrigger>
-                <TabsTrigger value="day2">Day 2</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="day1">Day 1 (Sunday)</TabsTrigger>
+                <TabsTrigger value="day2">Day 2 (Monday)</TabsTrigger>
+                <TabsTrigger value="day3">Day 3 (Tuesday)</TabsTrigger>
               </TabsList>
 
               {Object.entries(scheduleData).map(([day, data]) => (
