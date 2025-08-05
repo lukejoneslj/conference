@@ -21,6 +21,21 @@ import {
 import Link from 'next/link'
 import { useAuth } from '@/contexts/AuthContext'
 
+// Session type definition
+interface SessionType {
+  id: number
+  time: string
+  title: string
+  type: string
+  room: string
+  speaker: string | null
+  description: string
+  favorite: boolean
+  isBreakout: boolean
+  capacity?: number
+  registered?: number
+}
+
 // Complete 3-day conference schedule
 const scheduleData = {
   'day1': {
@@ -830,6 +845,142 @@ function SpeakerModal({ speaker, open, onOpenChange }: {
 
 
 
+// Presentation details and learning objectives
+const presentationDetails: { [key: string]: { summary: string; learningObjectives: string; speakerBio?: string } } = {
+  '5': {
+    summary: `These four presentations will describe new research findings given by:
+
+Dr. Lisa Baranick: Correlates of chronic pain worldwide 
+Dr. Dan Kaufmann: EAET for migraine headaches in group settings 
+Marjorie Heule: ACEs and other factors in chronic pelvic pain 
+Dr. Paul Hansma: Activity of human brain organoids`,
+    learningObjectives: 'Participants will be able to describe research findings on worldwide chronic pain, migraine headaches, pelvic pain and human brain organoids.'
+  },
+  '12': {
+    summary: `This advanced Pain Reprocessing Therapy (PRT) presentation focuses on integrating emotional processing and self-compassion into clinical work. Moving beyond foundational skills like somatic tracking, the session explores how unresolved emotions and patterns of self-criticism can amplify symptoms and hinder recovery. Through case examples, experiential techniques, and applied strategies, presenters will demonstrate how to support clients in relating differently to their emotional experiences and fostering a more compassionate relationship with the self to facilitate lasting neuroplastic change.`,
+    learningObjectives: 'Participants will learn advanced PRT techniques for integrating emotional processing and self-compassion into clinical practice.'
+  },
+  '14': {
+    summary: `Our brain is our biggest sexual organ! Therefore, as a mindbody/neuroplasticity-oriented provider you are uniquely poised to help people experiencing sexual dysfunction. In this talk, you will learn to apply our existing ways of thinking about neuroplastic symptoms to sexual challenges. You will also gain knowledge about the neuroscience of sex and pleasure. Then, we will explore a cross disciplinary, transdiagnostic framework for understanding and treating sexual issues using Memory Reconsolidation neuroscience research as our compass. With this framework, you will be able to experience the confidence that comes with having a universal road map, along with the freedom and autonomy to use your preferred techniques and even your creativity (!) - having fun when working with people experiencing sexual challenges.`,
+    learningObjectives: 'Participants will learn to apply neuroplastic symptom frameworks to sexual challenges and gain knowledge about the neuroscience of sex and pleasure.'
+  },
+  '15': {
+    summary: `The goal of this presentation is to break down the increasingly complex area of Neuroplastic Syndrome to its core elements. The Fundamentals which I first learned over forty years ago and continue to practice today. By focusing on the Basics, I hope to offer both the novice and experienced practitioner new insights into the treatment of this condition.`,
+    learningObjectives: `• Understand the Core Principles of Neuroplastic Pain
+• Simplify the Approach to Treatment of Neuroplastic Symptoms  
+• Integrate Fundamentals and Newer Approaches for Successful Outcomes`
+  },
+  '16': {
+    summary: `In this experiential session, you'll be invited to move, breathe, and feel—to reconnect with your body as a source of clarity, resilience, and insight. At a conference full of such powerful information and ideas, this is a chance to integrate.`,
+    learningObjectives: `Through guided movement and introductory partner exercises, you will be introduced to the power of:
+• Embodied confidence
+• Using breath to metabolize your feeling, not bypass it
+• Accessing intuition as a valid source of clinical insight
+• Communication with patients from embodied presence
+
+This session is a chance to explore how bringing more body awareness, breath and presence can make your care even more effective and sustainable. No dance or movement experience necessary—just curiosity and a willingness to show up as you are.`
+  },
+  '19': {
+    summary: `Surprisingly, the underlying autonomic circuit changes that underlie POTS have not been examined. Instead, studies in the last 30 years have explored cardio- and cerebro-vascular, immunologic, mast cell activation and connective tissue mechanisms. This talk will present a hypothesis with supportive data for a specific central nervous system pathophysiology.`,
+    learningObjectives: `Participants will be able to:
+• Differentiate Functional and Structural Autonomic Disorders
+• Explain the features of POTS that suggest a CNS etiology
+• Describe the functions of the peri-aqueductal gray region (PAG)
+• Expound a novel theory on the role of the PAG in POTS
+• Review data on a novel treatment based on this perspective`
+  }
+}
+
+// Session details modal component
+function SessionDetailsModal({ session, open, onOpenChange }: { 
+  session: SessionType | null, 
+  open: boolean, 
+  onOpenChange: (open: boolean) => void 
+}) {
+  if (!session) return null
+
+  const details = presentationDetails[session.id.toString()]
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-4xl max-h-[80vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="text-xl font-bold text-gray-900 pr-8">
+            {session.title}
+          </DialogTitle>
+          <div className="flex items-center gap-4 text-sm text-gray-600 mt-2">
+            <span className="flex items-center gap-1">
+              <Clock className="w-4 h-4" />
+              {session.time}
+            </span>
+            {session.room && (
+              <span className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                {session.room}
+              </span>
+            )}
+          </div>
+          {session.speaker && (
+            <p className="text-blue-600 font-medium mt-1">
+              {session.speaker}
+            </p>
+          )}
+        </DialogHeader>
+        
+        <div className="space-y-6 mt-4">
+          {details ? (
+            <>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Presentation Summary</h3>
+                <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                  {details.summary}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Learning Objectives</h3>
+                <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                  {details.learningObjectives}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Speaker Biography</h3>
+                <div className="text-gray-500 italic">
+                  {details.speakerBio || 'Speaker biography will be added soon.'}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Presentation Summary</h3>
+                <div className="text-gray-700">
+                  {session.description}
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Learning Objectives</h3>
+                <div className="text-gray-500 italic">
+                  Learning objectives will be added soon.
+                </div>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Speaker Biography</h3>
+                <div className="text-gray-500 italic">
+                  Speaker biography will be added soon.
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 // Lunch table topics
 const lunchTableTopics = [
   { id: 1, topic: "Starting a Mind-Body Practice", capacity: 8, registered: 0, host: "Dr. Sarah Johnson" },
@@ -847,6 +998,8 @@ export default function ConferenceHub() {
   const [selectedSpeaker, setSelectedSpeaker] = useState<typeof speakers[0] | null>(null)
   const [showSpeakerModal, setShowSpeakerModal] = useState(false)
   const [selectedDay, setSelectedDay] = useState<string>('all')
+  const [selectedSession, setSelectedSession] = useState<SessionType | null>(null)
+  const [showSessionModal, setShowSessionModal] = useState(false)
   
   const { user, signOut, registerForSession, unregisterFromSession, registerForLunchTable, toggleNotifications, sessionData } = useAuth()
 
@@ -858,6 +1011,11 @@ export default function ConferenceHub() {
   const handleSpeakerClick = (speaker: typeof speakers[0]) => {
     setSelectedSpeaker(speaker)
     setShowSpeakerModal(true)
+  }
+
+  const handleSessionClick = (session: SessionType) => {
+    setSelectedSession(session)
+    setShowSessionModal(true)
   }
 
   const handleBreakoutRegistration = async (sessionId: string) => {
@@ -992,9 +1150,9 @@ export default function ConferenceHub() {
                     <CardContent>
                       <div className="space-y-4">
                         {data.sessions.map((session) => (
-                          <div key={session.id} className={`border rounded-lg p-4 hover:shadow-md transition-shadow ${
+                          <div key={session.id} className={`border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer ${
                             session.type === 'concurrent' ? 'ml-4 border-l-4 border-l-blue-200 bg-blue-50/30' : ''
-                          }`}>
+                          }`} onClick={() => handleSessionClick(session)}>
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
                                 <div className="flex items-center gap-4 mb-2">
@@ -1442,6 +1600,11 @@ export default function ConferenceHub() {
         speaker={selectedSpeaker} 
         open={showSpeakerModal} 
         onOpenChange={setShowSpeakerModal} 
+      />
+      <SessionDetailsModal 
+        session={selectedSession} 
+        open={showSessionModal} 
+        onOpenChange={setShowSessionModal} 
       />
     </div>
   )
