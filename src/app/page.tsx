@@ -847,6 +847,13 @@ function SpeakerModal({ speaker, open, onOpenChange }: {
 
 // Presentation details and learning objectives
 const presentationDetails: { [key: string]: { summary: string; learningObjectives: string; speakerBio?: string } } = {
+  '3': {
+    summary: `Hand to Heart: An Opportunity for Healing with Neuroplastic Symptoms - This session provides an opportunity for healing and connection within the neuroplastic symptoms community, offering practical approaches and emotional support for both practitioners and patients dealing with neuroplastic conditions.`,
+    learningObjectives: `• Learn practical approaches for supporting healing in neuroplastic symptoms
+• Develop skills for creating therapeutic connections with patients
+• Understand the role of compassion and emotional support in recovery
+• Explore evidence-based techniques for neuroplastic symptom management`
+  },
   '5': {
     summary: `These four presentations will describe new research findings given by:
 
@@ -922,12 +929,25 @@ This session is a chance to explore how bringing more body awareness, breath and
 • Identify symptom patterns and patient narratives that may suggest a neuroplastic rather than biomedical etiology
 • Learn how to compassionately introduce a brain-based healing model to patients with longstanding illness narratives`
   },
+  '34': {
+    summary: `Chronic Lyme disease and mold toxicity are increasingly common diagnoses for patients experiencing persistent, debilitating symptoms such as fatigue, brain fog, anxiety, pain, dizziness, headaches, and heightened chemical or environmental sensitivities. While these symptom patterns are very real, the underlying mechanisms behind them remain complex and often misunderstood. This presentation explores the current state of the science surrounding these conditions and highlights the growing evidence that many symptoms may be best understood through the lens of neuroplasticity — as brain- and nervous system-based processes rather than signs of ongoing infection or toxic exposure. Attendees will leave with tools to support patients in a compassionate and evidence-based way, grounded in neuroscience and the principles of neuroplastic healing.`,
+    learningObjectives: `• Examine the current scientific literature on chronic Lyme disease and mold-related illness, including areas of consensus and controversy
+• Explore how neuroplastic mechanisms may play a central role in chronic symptoms often attributed to infection or toxicity
+• Identify symptom patterns and patient narratives that may suggest a neuroplastic rather than biomedical etiology
+• Learn how to compassionately introduce a brain-based healing model to patients with longstanding illness narratives`
+  },
   '26': {
     summary: `In this workshop, we will teach how to conduct several key techniques of EAET for chronic pain and other somatic symptoms. Using videos, demonstrations, and/or experiential exercises, this workshop will help attendees learn how to link emotional patterns to pain symptoms, facilitate the experiencing and expression of adaptive feelings, and recognize and work with defenses.`,
     learningObjectives: `Attendees will learn to:
 • Link emotional processes to somatic experiences, including pain
 • Recognize and challenge defenses that block emotional experience
 • Facilitate the activation and expression of avoided emotions`
+  },
+  '17': {
+    summary: `The brain and nervous system is a phenomenon of the feeling body as much as it is the thinking mind. John Sarno observed that TMS frequently presented itself in individuals that repressed emotions (anger in particular) and that for patients where psychoeducation alone was ineffective, going deeper into feelings was required. In this workshop, we will guide participants into directly accessing their felt sense and the underlying sensations, emotions and energetic charge that often underlies symptoms. Merging methods from multiple lineages of bodywork as well as Peter Levine's Somatic Experiencing, participants will leave the workshop with a new dimension and depth of access to their nervous system through their body.`,
+    learningObjectives: `• Develop rapid access to the felt sense
+• Become aware of nervous system states through the body
+• Identify symptom presentations with underlying emotional states`
   },
   '27': {
     summary: `The brain and nervous system is a phenomenon of the feeling body as much as it is the thinking mind. John Sarno observed that TMS frequently presented itself in individuals that repressed emotions (anger in particular) and that for patients where psychoeducation alone was ineffective, going deeper into feelings was required. In this workshop, we will guide participants into directly accessing their felt sense and the underlying sensations, emotions and energetic charge that often underlies symptoms. Merging methods from multiple lineages of bodywork as well as Peter Levine's Somatic Experiencing, participants will leave the workshop with a new dimension and depth of access to their nervous system through their body.`,
@@ -967,6 +987,12 @@ This session is a chance to explore how bringing more body awareness, breath and
 • Learn from each other, share best practices and ideas from different viewpoints and countries
 • Exchange ideas on proactive health: how can we inspire people to apply mind body principles early on to prevent symptoms from becoming chronic conditions
 • Explore how can we strengthen each other and work together to shift the paradigm`
+  },
+  '42': {
+    summary: `This presentation explores the shared neurobiological and psychological mechanisms underlying trauma, addiction, and chronic pain. Emphasizing the role of the autonomic nervous system, emotional suppression, and maladaptive neuroplasticity, it introduces a psychophysiologic model that reframes these conditions as interconnected expressions of dysregulation. Evidence-based interventions such as Pain Reprocessing Therapy, Acceptance and Commitment Therapy, and Internal Family System will be discussed to support nervous system regulation and emotional integration. Attendees will gain practical insights into treating complex pain through a trauma-informed lens.`,
+    learningObjectives: `• Define the interrelated mechanisms of trauma, addiction, and chronic pain through the lens of psychophysiologic disorders, including the roles of dysregulated stress response systems and neuroplastic changes in the brain
+• Explain the role of the autonomic nervous system (ANS)—particularly through the framework of Theory of Constructed Emotion (TCE)
+• Demonstrate the 3Ns, a modified version of Somatic Tracking to instil physiological and psychological safety cues for complex clinical presentations in service of repairing the nervous system`
   },
   '45': {
     summary: `This presentation explores the shared neurobiological and psychological mechanisms underlying trauma, addiction, and chronic pain. Emphasizing the role of the autonomic nervous system, emotional suppression, and maladaptive neuroplasticity, it introduces a psychophysiologic model that reframes these conditions as interconnected expressions of dysregulation. Evidence-based interventions such as Pain Reprocessing Therapy, Acceptance and Commitment Therapy, and Internal Family System will be discussed to support nervous system regulation and emotional integration. Attendees will gain practical insights into treating complex pain through a trauma-informed lens.`,
@@ -1280,10 +1306,10 @@ export default function ConferenceHub() {
                                     {session.time}
                                   </span>
                                   {session.room && (
-                                    <span className="text-sm text-gray-600 flex items-center gap-1">
-                                      <MapPin className="w-4 h-4" />
-                                      {session.room}
-                                    </span>
+                                  <span className="text-sm text-gray-600 flex items-center gap-1">
+                                    <MapPin className="w-4 h-4" />
+                                    {session.room}
+                                  </span>
                                   )}
                                 </div>
                                 <h3 className="font-semibold text-gray-900 mb-1 cursor-pointer hover:text-blue-600" 
@@ -1551,7 +1577,7 @@ export default function ConferenceHub() {
                     referrerPolicy="no-referrer-when-downgrade"
                     title="ATNS 2025 Conference Venue Map"
                   />
-                </div>
+                        </div>
                 <div className="mt-4 p-4 bg-blue-50 rounded-lg">
                   <h4 className="font-medium text-blue-900 mb-2">Boulder Jewish Community Center</h4>
                   <p className="text-sm text-blue-800">6007 Oreg Avenue, Boulder, CO 80303</p>
