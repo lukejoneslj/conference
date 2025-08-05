@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -13,13 +13,29 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { 
   Calendar, MapPin, Clock, Users, Search, 
   Heart, Share2, ChevronRight, 
-  Bookmark, Mic, Mail, FileText,
+  Bookmark, Mic, FileText,
   UserPlus, LogOut, Bell, BellOff, MessageSquare,
   Map, Utensils, CheckCircle, XCircle,
   AlertCircle, User
 } from 'lucide-react'
 import Link from 'next/link'
+import speakersData from '../../public/speakers.json'
 import { useAuth } from '@/contexts/AuthContext'
+
+// Speaker interface
+interface Speaker {
+  id?: number
+  name: string
+  title: string
+  subtitle: string
+  image_url: string
+  bio: string
+  local_image_path: string
+  initials?: string
+  specialty?: string
+  sessions?: number
+  topics?: string[]
+}
 
 // Session type definition
 interface SessionType {
@@ -675,42 +691,15 @@ const scheduleData = {
   }
 }
 
-// Enhanced speakers data
-const speakers = [
-  { 
-    id: 1,
-    name: "Howard Schubiner", 
-    title: "MD", 
-    specialty: "TMS Expert", 
-    initials: "HS", 
-    sessions: 3,
-    bio: "Dr. Howard Schubiner is a pioneer in the field of mind-body medicine and neuroplastic pain treatment.",
-    email: "hschubiner@example.com",
-    topics: ["Neuroplastic Pain", "Mind-Body Medicine", "TMS Treatment"]
-  },
-  { 
-    id: 2,
-    name: "David Clarke", 
-    title: "MD", 
-    specialty: "Psychosomatic Medicine", 
-    initials: "DC", 
-    sessions: 2,
-    bio: "Dr. David Clarke is the president of ATNS and a leading expert in psychosomatic medicine.",
-    email: "dclarke@example.com",
-    topics: ["Psychosomatic Medicine", "Clinical Practice", "Patient Care"]
-  },
-  { 
-    id: 3,
-    name: "Christie Uipi", 
-    title: "LCSW", 
-    specialty: "Clinical Social Work", 
-    initials: "CU", 
-    sessions: 1,
-    bio: "Christie Uipi is a licensed clinical social worker specializing in pain reprocessing therapy.",
-    email: "cuipi@example.com",
-    topics: ["Pain Reprocessing", "Therapy Techniques", "Emotional Processing"]
-  }
-]
+// Enhanced speakers data from JSON
+const speakers: Speaker[] = speakersData.map((speaker, index) => ({
+  ...speaker,
+  id: index + 1,
+  initials: speaker.name.split(' ').map(n => n[0]).join('').slice(0, 2),
+  specialty: speaker.subtitle || speaker.title,
+  sessions: 1, // We'll calculate this dynamically later if needed
+  topics: [speaker.title, speaker.subtitle].filter(Boolean)
+}))
 
 // Sign in modal component
 function SignInModal({ open, onOpenChange }: { open: boolean, onOpenChange: (open: boolean) => void }) {
@@ -786,7 +775,7 @@ function SignInModal({ open, onOpenChange }: { open: boolean, onOpenChange: (ope
 
 // Speaker detail modal
 function SpeakerModal({ speaker, open, onOpenChange }: { 
-  speaker: typeof speakers[0] | null, 
+  speaker: Speaker | null, 
   open: boolean, 
   onOpenChange: (open: boolean) => void 
 }) {
@@ -794,48 +783,50 @@ function SpeakerModal({ speaker, open, onOpenChange }: {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-3">
-            <Avatar className="w-12 h-12">
+            <Avatar className="w-16 h-16">
+              <AvatarImage 
+                src={`/${speaker.local_image_path}`} 
+                alt={speaker.name}
+                className="object-cover"
+              />
               <AvatarFallback className="text-lg font-semibold bg-blue-100 text-blue-600">
                 {speaker.initials}
               </AvatarFallback>
             </Avatar>
             <div>
-              <div>{speaker.name}</div>
+              <div className="text-xl font-bold">{speaker.name}</div>
               <div className="text-sm text-gray-600 font-normal">{speaker.title}</div>
+              {speaker.subtitle && (
+                <div className="text-sm text-blue-600 font-normal">{speaker.subtitle}</div>
+              )}
             </div>
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div>
-            <h4 className="font-semibold mb-2">Specialty</h4>
-            <p className="text-sm text-gray-600">{speaker.specialty}</p>
-          </div>
-          <div>
             <h4 className="font-semibold mb-2">Biography</h4>
-            <p className="text-sm text-gray-600">{speaker.bio}</p>
-        </div>
-              <div>
-            <h4 className="font-semibold mb-2">Topics</h4>
-            <div className="flex flex-wrap gap-1">
-              {speaker.topics.map((topic, index) => (
-                <Badge key={index} variant="secondary" className="text-xs">
-                  {topic}
-                                  </Badge>
-              ))}
+            <div className="text-sm text-gray-600 whitespace-pre-line leading-relaxed">
+              {speaker.bio}
             </div>
           </div>
+          {speaker.topics && speaker.topics.length > 0 && (
+            <div>
+              <h4 className="font-semibold mb-2">Expertise</h4>
+              <div className="flex flex-wrap gap-1">
+                {speaker.topics.map((topic, index) => (
+                  <Badge key={index} variant="secondary" className="text-xs">
+                    {topic}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
           <div>
             <h4 className="font-semibold mb-2">Sessions</h4>
-            <Badge>{speaker.sessions} session{speaker.sessions !== 1 ? 's' : ''}</Badge>
-                </div>
-          <div className="pt-2">
-                <Button className="w-full" variant="outline">
-                  <Mail className="w-4 h-4 mr-2" />
-              Contact Speaker
-                </Button>
+            <Badge>{speaker.sessions || 1} session{(speaker.sessions || 1) !== 1 ? 's' : ''}</Badge>
           </div>
         </div>
       </DialogContent>
@@ -1145,7 +1136,7 @@ export default function ConferenceHub() {
   const [searchTerm, setSearchTerm] = useState('')
   const [activeTab, setActiveTab] = useState('schedule')
   const [showSignIn, setShowSignIn] = useState(false)
-  const [selectedSpeaker, setSelectedSpeaker] = useState<typeof speakers[0] | null>(null)
+  const [selectedSpeaker, setSelectedSpeaker] = useState<Speaker | null>(null)
   const [showSpeakerModal, setShowSpeakerModal] = useState(false)
   const [selectedDay, setSelectedDay] = useState<string>('all')
   const [selectedSession, setSelectedSession] = useState<SessionType | null>(null)
@@ -1155,10 +1146,12 @@ export default function ConferenceHub() {
 
   const filteredSpeakers = speakers.filter(speaker =>
     speaker.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    speaker.specialty.toLowerCase().includes(searchTerm.toLowerCase())
+    (speaker.specialty && speaker.specialty.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    speaker.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (speaker.subtitle && speaker.subtitle.toLowerCase().includes(searchTerm.toLowerCase()))
   )
 
-  const handleSpeakerClick = (speaker: typeof speakers[0]) => {
+  const handleSpeakerClick = (speaker: Speaker) => {
     setSelectedSpeaker(speaker)
     setShowSpeakerModal(true)
   }
@@ -1330,7 +1323,8 @@ export default function ConferenceHub() {
                                      onClick={(e) => {
                                        e.preventDefault()
                                        e.stopPropagation()
-                                       handleSpeakerClick(speakers.find(s => session.speaker?.includes(s.name)) || speakers[0])
+                                       const foundSpeaker = speakers.find(s => session.speaker?.includes(s.name))
+                                       if (foundSpeaker) handleSpeakerClick(foundSpeaker)
                                      }}>
                                     <Mic className="w-4 h-4" />
                                     {session.speaker}
@@ -1543,21 +1537,28 @@ export default function ConferenceHub() {
                           onClick={() => handleSpeakerClick(speaker)}>
                       <CardContent className="p-4">
                         <div className="flex items-center gap-3">
-                          <Avatar className="w-12 h-12">
+                          <Avatar className="w-16 h-16">
+                            <AvatarImage 
+                              src={`/${speaker.local_image_path}`} 
+                              alt={speaker.name}
+                              className="object-cover"
+                            />
                             <AvatarFallback className="text-lg font-semibold bg-blue-100 text-blue-600">
-                          {speaker.initials}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1">
-                        <h4 className="font-medium text-gray-900">{speaker.name}</h4>
-                        <p className="text-sm text-gray-600">{speaker.title}</p>
-                        <p className="text-xs text-blue-600">{speaker.specialty}</p>
+                              {speaker.initials}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1">
+                            <h4 className="font-medium text-gray-900">{speaker.name}</h4>
+                            <p className="text-sm text-gray-600">{speaker.title}</p>
+                            {speaker.subtitle && (
+                              <p className="text-xs text-blue-600">{speaker.subtitle}</p>
+                            )}
                             <Badge variant="secondary" className="mt-1">
-                              {speaker.sessions} session{speaker.sessions !== 1 ? 's' : ''}
+                              {speaker.sessions || 1} session{(speaker.sessions || 1) !== 1 ? 's' : ''}
                             </Badge>
-                      </div>
+                          </div>
                           <ChevronRight className="w-4 h-4 text-gray-400" />
-                      </div>
+                        </div>
                       </CardContent>
                     </Card>
                   ))}
