@@ -12,10 +12,10 @@ import { Combobox } from '@/components/ui/combobox'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { 
   Calendar, MapPin, Clock, Users, Search, 
-  Heart, Share2, ChevronRight, Car, 
+  Heart, Share2, ChevronRight, 
   Bookmark, Mic, Mail, FileText,
   UserPlus, LogOut, Bell, BellOff, MessageSquare,
-  Map, Navigation, Utensils, CheckCircle, XCircle,
+  Map, Utensils, CheckCircle, XCircle,
   AlertCircle, User
 } from 'lucide-react'
 import Link from 'next/link'
@@ -1258,87 +1258,29 @@ export default function ConferenceHub() {
                   <Map className="w-5 h-5" />
                   Venue Map & Directions
                 </CardTitle>
+                <CardDescription>
+                  Interactive map showing the Boulder Jewish Community Center and surrounding area
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="font-semibold mb-4">Room Locations</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 border rounded-lg">
-                        <div>
-                          <h4 className="font-medium">Main Auditorium</h4>
-                          <p className="text-sm text-gray-600">Keynotes & Main Sessions</p>
-                        </div>
-                        <Badge>Ground Floor</Badge>
-                      </div>
-                      <div className="flex items-center justify-between p-3 border rounded-lg">
-                        <div>
-                          <h4 className="font-medium">Room A</h4>
-                          <p className="text-sm text-gray-600">Breakout Sessions</p>
-                        </div>
-                        <Badge>2nd Floor</Badge>
-                      </div>
-                      <div className="flex items-center justify-between p-3 border rounded-lg">
-                        <div>
-                          <h4 className="font-medium">Room B</h4>
-                          <p className="text-sm text-gray-600">Breakout Sessions</p>
-                        </div>
-                        <Badge>2nd Floor</Badge>
-                      </div>
-                      <div className="flex items-center justify-between p-3 border rounded-lg">
-                        <div>
-                          <h4 className="font-medium">Room C</h4>
-                          <p className="text-sm text-gray-600">Breakout Sessions</p>
-                        </div>
-                        <Badge>3rd Floor</Badge>
-                      </div>
-                      <div className="flex items-center justify-between p-3 border rounded-lg">
-                        <div>
-                          <h4 className="font-medium">Dining Area</h4>
-                          <p className="text-sm text-gray-600">Meals & Networking</p>
-                        </div>
-                        <Badge>Ground Floor</Badge>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-4">Venue Information</h3>
-                    <div className="space-y-4">
-                      <div className="p-4 border rounded-lg">
-                        <h4 className="font-medium mb-2">Boulder Jewish Community Center</h4>
-                        <p className="text-sm text-gray-600 mb-2">6007 Oreg Avenue<br/>Boulder, CO 80303</p>
-                        <Button size="sm" className="w-full">
-                          <Navigation className="w-4 h-4 mr-2" />
-                          Get Directions
-                </Button>
-                      </div>
-                      <div className="p-4 border rounded-lg">
-                        <h4 className="font-medium mb-2">Parking</h4>
-                        <p className="text-sm text-gray-600 mb-2">Free parking available in the main lot. Overflow parking in adjacent lots.</p>
-                        <Button size="sm" variant="outline" className="w-full">
-                  <Car className="w-4 h-4 mr-2" />
-                          Parking Details
-                </Button>
+                <div className="w-full h-[600px] rounded-lg overflow-hidden border">
+                  <iframe
+                    src="https://www.google.com/maps/d/u/0/embed?mid=1Fw6AJ1KfX6_3VAwll_j84-IGj2xT74s&ehbc=2E312F"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="ATNS 2025 Conference Venue Map"
+                  />
                 </div>
-                      <div className="p-4 border rounded-lg">
-                        <h4 className="font-medium mb-2">WiFi & Contact</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>WiFi:</span>
-                    <span className="font-medium">ATNS2025</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Emergency:</span>
-                    <span className="font-medium">ext. 911</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Organizers:</span>
-                    <span className="font-medium">ext. 100</span>
-                  </div>
-                </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                  <h4 className="font-medium text-blue-900 mb-2">Boulder Jewish Community Center</h4>
+                  <p className="text-sm text-blue-800">6007 Oreg Avenue, Boulder, CO 80303</p>
+                  <p className="text-xs text-blue-600 mt-1">
+                    Click and drag to explore the map. Use the fullscreen button for better navigation.
+                  </p>
                 </div>
               </CardContent>
             </Card>
