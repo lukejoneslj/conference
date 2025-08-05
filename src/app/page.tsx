@@ -15,87 +15,80 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
-// Mock schedule data for 3 days
+// ATNS 2025 Conference Schedule
 const scheduleData = {
   'day1': {
     date: 'Sunday, September 28, 2025',
     sessions: [
       {
         id: 1,
-        time: '12:00 PM - 12:30 PM',
-        title: 'Registration & Welcome Coffee',
+        time: '12:30 PM',
+        title: 'Conference Check-In Opens',
         type: 'registration',
         room: 'Main Lobby',
         speaker: null,
-        description: 'Check-in, badge pickup, and networking coffee'
+        description: 'Registration and badge pickup',
+        favorite: false
       },
       {
         id: 2,
-        time: '12:30 PM - 1:15 PM',
-        title: 'Opening Keynote: The Future of Neuroplastic Treatment',
-        type: 'keynote',
+        time: '1:50 PM',
+        title: 'Welcome Announcement',
+        type: 'announcement',
         room: 'Main Auditorium',
-        speaker: 'Dr. Howard Schubiner',
-        description: 'Opening address on breakthrough approaches in neuroplastic symptoms treatment',
+        speaker: null,
+        description: 'Official conference welcome',
         favorite: false
       },
       {
         id: 3,
-        time: '1:30 PM - 2:15 PM',
-        title: 'Understanding Pain Neuroplasticity',
+        time: '2:00 PM - 3:00 PM',
+        title: 'Session #1: Hand to Heart: An Opportunity for Healing with Neuroplastic Symptoms',
         type: 'session',
-        room: 'Conference Room A',
-        speaker: 'Dr. David Schechter',
-        description: 'Deep dive into the mechanisms of neuroplastic pain',
-        favorite: true
+        room: 'Main Auditorium',
+        speaker: 'Monica Fitzgerald, PhD + Rita Gupta, DO MPA',
+        description: 'An opportunity for healing with neuroplastic symptoms',
+        favorite: false
       },
       {
         id: 4,
-        time: '1:30 PM - 2:15 PM',
-        title: 'Trauma-Informed Care Approaches',
-        type: 'session',
-        room: 'Conference Room B',
-        speaker: 'Dr. Mark Lumley',
-        description: 'Integrating trauma-informed principles in treatment',
+        time: '3:00 PM - 3:15 PM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Refreshment break',
         favorite: false
       },
       {
         id: 5,
-        time: '2:15 PM - 2:45 PM',
-        title: 'Coffee Break & Networking',
-        type: 'break',
-        room: 'Main Lobby',
-        speaker: null,
-        description: 'Sponsored by Boulder Coffee Collective'
+        time: '3:15 PM - 4:15 PM',
+        title: 'Session #2: New Research in Neuroplastic Symptoms',
+        type: 'session',
+        room: 'Main Auditorium',
+        speaker: 'Howard Schubiner, MD + Dan Kaufmann, PhD + Paul Hansma, PhD + Marjorie Heule, MS + Lisa E. Baranik, PhD',
+        description: 'Latest research findings in neuroplastic symptoms',
+        favorite: true
       },
       {
         id: 6,
-        time: '2:45 PM - 3:30 PM',
-        title: 'Panel: Clinical Applications',
-        type: 'panel',
+        time: '4:15 PM',
+        title: 'Closing Remarks',
+        type: 'announcement',
         room: 'Main Auditorium',
-        speaker: 'Multiple Speakers',
-        description: 'Real-world application stories from leading practitioners',
+        speaker: null,
+        description: 'Day 1 closing remarks',
         favorite: false
       },
       {
         id: 7,
-        time: '3:45 PM - 4:30 PM',
-        title: 'Hands-on Workshop: Assessment Techniques',
-        type: 'workshop',
-        room: 'Workshop Room 1',
-        speaker: 'Dr. Christie Uipi',
-        description: 'Interactive workshop on patient assessment methods',
-        favorite: true
-      },
-      {
-        id: 8,
-        time: '5:00 PM - 6:30 PM',
+        time: '4:30 PM - 6:00 PM',
         title: 'Welcome Reception',
         type: 'social',
-        room: 'Outdoor Patio',
+        room: 'Reception Area',
         speaker: null,
-        description: 'Networking reception with local catering and drinks'
+        description: 'Welcome reception and networking',
+        favorite: false
       }
     ]
   },
@@ -103,91 +96,263 @@ const scheduleData = {
     date: 'Monday, September 29, 2025',
     sessions: [
       {
-        id: 9,
-        time: '8:00 AM - 9:00 AM',
-        title: 'Breakfast & Networking',
+        id: 8,
+        time: '8:00 AM',
+        title: 'Breakfast & Interest Group Session',
         type: 'break',
         room: 'Main Lobby',
         speaker: null,
-        description: 'Continental breakfast and morning networking'
+        description: 'Breakfast and interest group discussions',
+        favorite: false
+      },
+      {
+        id: 9,
+        time: '9:00 AM - 10:00 AM',
+        title: 'Session #3: Pain Reprocessing Therapy, Advanced Skills: Working with Emotions and the Self',
+        type: 'session',
+        room: 'Main Auditorium',
+        speaker: 'Christie Uipi, LCSW + Vanessa Blackstone, MSW, ACSW',
+        description: 'Advanced skills in pain reprocessing therapy',
+        favorite: true
       },
       {
         id: 10,
-        time: '9:00 AM - 9:45 AM',
-        title: 'Keynote: Advances in Mind-Body Medicine',
-        type: 'keynote',
-        room: 'Main Auditorium',
-        speaker: 'Dr. David Clarke',
-        description: 'Latest research in psychosomatic medicine approaches',
+        time: '10:00 AM - 10:15 AM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Short break',
         favorite: false
       },
       {
         id: 11,
-        time: '10:00 AM - 10:45 AM',
-        title: 'Pediatric Neuroplastic Symptoms',
-        type: 'session',
-        room: 'Conference Room A',
-        speaker: 'Dr. Jennifer Franklin',
-        description: 'Specialized approaches for children and adolescents',
-        favorite: true
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #4A: Finding Common Threads: Using Experiential Mind/Body Approaches to Address Sexual Challenges',
+        type: 'concurrent',
+        room: 'Room A',
+        speaker: 'Lillian Bailey, MS, LMFT, CST',
+        description: 'Experiential mind/body approaches for sexual challenges',
+        favorite: false
       },
       {
         id: 12,
-        time: '10:00 AM - 10:45 AM',
-        title: 'Technology in Treatment',
-        type: 'session',
-        room: 'Conference Room B',
-        speaker: 'Dr. Paul Hansma',
-        description: 'Digital tools and apps for patient care',
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #4B: Fundamentals of Neuroplastic Pain Syndrome',
+        type: 'concurrent',
+        room: 'Room B',
+        speaker: 'David Schechter, MD',
+        description: 'Fundamentals of neuroplastic pain syndrome',
         favorite: false
       },
       {
         id: 13,
-        time: '11:00 AM - 11:45 AM',
-        title: 'Research Roundtable',
-        type: 'roundtable',
-        room: 'Workshop Room 2',
-        speaker: 'Research Committee',
-        description: 'Latest studies and ongoing research projects',
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #4C: Embody Your Message',
+        type: 'concurrent',
+        room: 'Room C',
+        speaker: 'Camille Thoman',
+        description: 'Embodying your therapeutic message',
         favorite: false
       },
       {
         id: 14,
-        time: '12:00 PM - 1:00 PM',
-        title: 'Lunch & Poster Session',
-        type: 'break',
-        room: 'Exhibition Hall',
-        speaker: null,
-        description: 'Lunch with poster presentations from attendees'
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #4D: Practical Somatics',
+        type: 'concurrent',
+        room: 'Room D',
+        speaker: 'Karden Rabin & Alexander Rosan',
+        description: 'Practical somatic approaches',
+        favorite: false
       },
       {
         id: 15,
-        time: '1:15 PM - 2:45 PM',
-        title: 'Intensive Workshop: Treatment Protocols',
-        type: 'workshop',
-        room: 'Workshop Room 1',
-        speaker: 'Dr. Amy Schere',
-        description: 'Extended hands-on training session',
-        favorite: true
+        time: '11:15 AM - 11:30 AM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Short break',
+        favorite: false
       },
       {
         id: 16,
-        time: '3:00 PM - 3:45 PM',
-        title: 'Case Study Presentations',
-        type: 'session',
-        room: 'Conference Room A',
-        speaker: 'Multiple Presenters',
-        description: 'Real patient cases and treatment outcomes',
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #5A: Does Postural Tachycardia Syndrome (POTS) reflect an error in our survival circuits?',
+        type: 'concurrent',
+        room: 'Room A',
+        speaker: 'Thomas Chelimsky, MD',
+        description: 'POTS and survival circuits',
         favorite: false
       },
       {
         id: 17,
-        time: '4:00 PM - 5:00 PM',
-        title: 'Special Interest Groups',
-        type: 'breakout',
-        room: 'Various Rooms',
-        speaker: 'Group Leaders',
-        description: 'Small group discussions by specialty',
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #5B: Integrating Neuroplastic Principles and Treatment into Frontline Healthcare',
+        type: 'concurrent',
+        room: 'Room B',
+        speaker: 'Geoffrey Keenan, MD + Jonathan Takahashi, MD, MPH',
+        description: 'Integration into frontline healthcare',
+        favorite: false
+      },
+      {
+        id: 18,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #5C: Cultivating a Felt-Sense of Internal and External Safety to Heal Neuroplastic Symptoms',
+        type: 'concurrent',
+        room: 'Room C',
+        speaker: 'Mags Clark-Smith, MA, PGCE, BCPT, BMC Dip & Jennifer Franklin, PhD',
+        description: 'Cultivating safety for healing',
+        favorite: false
+      },
+      {
+        id: 19,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #5D: Brain-Mind-Body (BMB) Takeaways from 25 years of the Lightning Process (LP)',
+        type: 'concurrent',
+        room: 'Room D',
+        speaker: 'Phil Parker, PhD, DO, Dip E Hyp Psych',
+        description: 'Lightning Process insights',
+        favorite: false
+      },
+      {
+        id: 20,
+        time: '12:30 PM - 1:45 PM',
+        title: 'Lunch with Table Discussions',
+        type: 'break',
+        room: 'Dining Area',
+        speaker: null,
+        description: 'Lunch and table discussions',
+        favorite: false
+      },
+      {
+        id: 21,
+        time: '1:45 PM - 2:45 PM',
+        title: 'Session #6A: Difficult Cases Seminar For Therapists',
+        type: 'concurrent',
+        room: 'Room A',
+        speaker: 'Jeffrey H. Axelbank, Psy.D. & David Clarke, MD',
+        description: 'Handling difficult therapeutic cases',
+        favorite: false
+      },
+      {
+        id: 22,
+        time: '1:45 PM - 2:45 PM',
+        title: 'Session #6B: Targeting the Root Causes of Chronic Pain in Emotional Awareness and Expression Therapy',
+        type: 'concurrent',
+        room: 'Room B',
+        speaker: 'Shoshana Krohner, PhD + Mark Lumley, PhD',
+        description: 'Emotional awareness and expression therapy',
+        favorite: false
+      },
+      {
+        id: 23,
+        time: '1:45 PM - 2:45 PM',
+        title: 'Session #6C: Science and Stories to Decode Chronic Fatigue',
+        type: 'concurrent',
+        room: 'Room C',
+        speaker: 'Rebecca Kennedy, MD & Rebecca Tolin',
+        description: 'Understanding chronic fatigue',
+        favorite: false
+      },
+      {
+        id: 24,
+        time: '1:45 PM - 2:45 PM',
+        title: 'Session #6D: Practical Somatics',
+        type: 'concurrent',
+        room: 'Room D',
+        speaker: 'Karden Rabin & Alexander Rosan',
+        description: 'Practical somatic approaches',
+        favorite: false
+      },
+      {
+        id: 25,
+        time: '2:45 PM - 3:00 PM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Short break',
+        favorite: false
+      },
+      {
+        id: 26,
+        time: '3:00 PM - 4:00 PM',
+        title: 'Session #7A: Building a movement for change: What (Recovered) patients and professionals can achieve together',
+        type: 'concurrent',
+        room: 'Room A',
+        speaker: 'Marjon Oomens, MsC',
+        description: 'Building collaborative movements',
+        favorite: false
+      },
+      {
+        id: 27,
+        time: '3:00 PM - 4:00 PM',
+        title: 'Session #7B: Introduction to EMDR therapy, Is it really that good?',
+        type: 'concurrent',
+        room: 'Room B',
+        speaker: 'Michelle Gottlieb, Psy.D., MFT, LPCC',
+        description: 'Introduction to EMDR therapy',
+        favorite: false
+      },
+      {
+        id: 28,
+        time: '3:00 PM - 4:00 PM',
+        title: 'Session #7C: How to Help Men with Pelvic & Sexual Issues (even the hard cases)',
+        type: 'concurrent',
+        room: 'Room C',
+        speaker: 'Michael Hodge',
+        description: 'Treating male pelvic and sexual issues',
+        favorite: false
+      },
+      {
+        id: 29,
+        time: '3:00 PM - 4:00 PM',
+        title: 'Session #7D: From Fear to Freedom: Teaching Patients to Trust Their Bodies Again',
+        type: 'concurrent',
+        room: 'Room D',
+        speaker: 'Leonida Tansinsin, MPT',
+        description: 'Rebuilding body trust',
+        favorite: false
+      },
+      {
+        id: 30,
+        time: '4:00 PM - 4:15 PM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Short break',
+        favorite: false
+      },
+      {
+        id: 31,
+        time: '4:15 PM - 5:15 PM',
+        title: 'Session #8: Exploring the State of the Science of Chronic Lyme and Mold',
+        type: 'session',
+        room: 'Main Auditorium',
+        speaker: 'Kate Smith, N.D.',
+        description: 'Science of chronic Lyme and mold',
+        favorite: false
+      },
+      {
+        id: 32,
+        time: '5:15 PM - 5:20 PM',
+        title: 'Closing Remarks',
+        type: 'announcement',
+        room: 'Main Auditorium',
+        speaker: null,
+        description: 'Day 2 closing remarks',
+        favorite: false
+      },
+      {
+        id: 33,
+        time: '5:45 PM - 7:00 PM',
+        title: 'Optional Happy Hour Gathering',
+        type: 'social',
+        room: 'Reception Area',
+        speaker: null,
+        description: 'Optional happy hour gathering',
         favorite: false
       }
     ]
@@ -196,91 +361,194 @@ const scheduleData = {
     date: 'Tuesday, September 30, 2025',
     sessions: [
       {
-        id: 18,
-        time: '8:00 AM - 9:00 AM',
-        title: 'Breakfast & Final Networking',
+        id: 34,
+        time: '8:00 AM',
+        title: 'Breakfast & Interest Group Session',
         type: 'break',
         room: 'Main Lobby',
         speaker: null,
-        description: 'Last chance networking over breakfast'
-      },
-      {
-        id: 19,
-        time: '9:00 AM - 9:45 AM',
-        title: 'Patient Advocacy & Communication',
-        type: 'session',
-        room: 'Main Auditorium',
-        speaker: 'Vanessa Blackstone',
-        description: 'Effective patient communication strategies',
+        description: 'Breakfast and interest group discussions',
         favorite: false
       },
       {
-        id: 20,
-        time: '10:00 AM - 10:45 AM',
-        title: 'Building Your Practice',
+        id: 35,
+        time: '9:00 AM - 10:00 AM',
+        title: 'Session #9: Feeling Safe Enough to Heal: Treating Trauma, Addiction and Chronic Pain',
         type: 'session',
-        room: 'Conference Room A',
-        speaker: 'Dr. Geoffrey Keenan',
-        description: 'Business aspects of neuroplastic symptom treatment',
-        favorite: true
-      },
-      {
-        id: 21,
-        time: '11:00 AM - 12:00 PM',
-        title: 'Q&A with Leading Experts',
-        type: 'panel',
         room: 'Main Auditorium',
-        speaker: 'Panel of Experts',
-        description: 'Open forum with conference faculty',
+        speaker: 'Les Aria, PhD',
+        description: 'Creating safety for healing trauma, addiction, and chronic pain',
         favorite: false
       },
       {
-        id: 22,
-        time: '12:15 PM - 1:15 PM',
-        title: 'Lunch & Awards Ceremony',
+        id: 36,
+        time: '10:00 AM - 10:15 AM',
+        title: 'Break',
         type: 'break',
-        room: 'Main Auditorium',
+        room: 'Main Lobby',
         speaker: null,
-        description: 'Recognition of contributions to the field'
+        description: 'Short break',
+        favorite: false
       },
       {
-        id: 23,
-        time: '1:30 PM - 2:15 PM',
-        title: 'Future Directions & Research',
+        id: 37,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10A: An Experiential Emotion-Focused Approach to Understanding and Treating Psychogenic Non-Epileptic Attacks (PNEA)',
+        type: 'concurrent',
+        room: 'Room A',
+        speaker: 'William H. Watson, PhD',
+        description: 'Emotion-focused approach to PNEA',
+        favorite: false
+      },
+      {
+        id: 38,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10B: Targeting the Root Causes of Chronic Pain in Emotional Awareness and Expression Therapy',
+        type: 'concurrent',
+        room: 'Room B',
+        speaker: 'Shoshana Krohner, PhD + Mark A. Lumley, PhD',
+        description: 'Emotional awareness and expression therapy',
+        favorite: false
+      },
+      {
+        id: 39,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10C: Introduction to EMDR therapy, Is it really that good?',
+        type: 'concurrent',
+        room: 'Room C',
+        speaker: 'Michelle Gottlieb, Psy.D., MFT, LPCC',
+        description: 'Introduction to EMDR therapy',
+        favorite: false
+      },
+      {
+        id: 40,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10D: Brain-Mind-Body (BMB) Takeaways from 25 years of the Lightning Process (LP)',
+        type: 'concurrent',
+        room: 'Room D',
+        speaker: 'Phil Parker, PhD, DO, Dip E Hyp Psych',
+        description: 'Lightning Process insights',
+        favorite: false
+      },
+      {
+        id: 41,
+        time: '11:15 AM - 11:30 AM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Short break',
+        favorite: false
+      },
+      {
+        id: 42,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11A: Psychedelic Medicine: from Neuroplasticity to Transcendence – An Overview',
+        type: 'concurrent',
+        room: 'Room A',
+        speaker: 'Matt McClanahan, DO, MA',
+        description: 'Overview of psychedelic medicine',
+        favorite: false
+      },
+      {
+        id: 43,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11B: Treating the Trauma Caused by Chronic Pain & Symptoms',
+        type: 'concurrent',
+        room: 'Room B',
+        speaker: 'Alex Klassen, MSW, RSW + Tanner Murtagh, MSW, RSW',
+        description: 'Treating trauma from chronic pain',
+        favorite: false
+      },
+      {
+        id: 44,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11C: Embody Your Message',
+        type: 'concurrent',
+        room: 'Room C',
+        speaker: 'Camille Thoman',
+        description: 'Embodying your therapeutic message',
+        favorite: false
+      },
+      {
+        id: 45,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11D: From Fear to Freedom: Teaching Patients to Trust Their Bodies Again',
+        type: 'concurrent',
+        room: 'Room D',
+        speaker: 'Leonida Tansinsin, MPT',
+        description: 'Rebuilding body trust',
+        favorite: false
+      },
+      {
+        id: 46,
+        time: '12:30 PM - 1:45 PM',
+        title: 'Lunch Break with Table Discussions',
+        type: 'break',
+        room: 'Dining Area',
+        speaker: null,
+        description: 'Lunch and table discussions',
+        favorite: false
+      },
+      {
+        id: 47,
+        time: '1:45 PM - 2:45 PM',
+        title: 'Session #12: Stigma as a Stressor: How Anti-Fat Bias Influences Neuroplastic Symptoms',
         type: 'session',
-        room: 'Conference Room A',
-        speaker: 'Dr. Rebecca Kennedy',
-        description: 'Emerging trends and future research opportunities',
-        favorite: false
-      },
-      {
-        id: 24,
-        time: '2:30 PM - 3:15 PM',
-        title: 'Implementation Strategies',
-        type: 'workshop',
-        room: 'Workshop Room 1',
-        speaker: 'Dr. Kate Smith',
-        description: 'Taking learnings back to your practice',
-        favorite: true
-      },
-      {
-        id: 25,
-        time: '3:30 PM - 4:15 PM',
-        title: 'Closing Keynote: Moving Forward Together',
-        type: 'keynote',
         room: 'Main Auditorium',
-        speaker: 'Dr. Howard Schubiner',
-        description: 'Closing thoughts and call to action',
+        speaker: 'Deb Malkin, Amy Schere, MSW, LCSWA, PT, DPT',
+        description: 'Impact of anti-fat bias on neuroplastic symptoms',
         favorite: false
       },
       {
-        id: 26,
-        time: '4:15 PM - 5:00 PM',
-        title: 'Closing Reception & Farewells',
+        id: 48,
+        time: '2:45 PM - 3:00 PM',
+        title: 'Break',
+        type: 'break',
+        room: 'Main Lobby',
+        speaker: null,
+        description: 'Short break',
+        favorite: false
+      },
+      {
+        id: 49,
+        time: '3:00 PM - 4:00 PM',
+        title: 'Session #13: Neuroplastic Symptoms of the Ear: Tinnitus, Sound Sensitivity and Dizziness',
+        type: 'session',
+        room: 'Main Auditorium',
+        speaker: 'Yonit Arthur, AuD & Marcia Dewey, AuD, CCC/A',
+        description: 'Neuroplastic symptoms affecting the ear',
+        favorite: false
+      },
+      {
+        id: 50,
+        time: '4:00 PM',
+        title: 'ATNS President David Clarke, MD - Closing Remarks',
+        type: 'announcement',
+        room: 'Main Auditorium',
+        speaker: 'David Clarke, MD',
+        description: 'ATNS President closing remarks',
+        favorite: false
+      },
+      {
+        id: 51,
+        time: '4:30 PM',
+        title: 'ATNS Board - Closing Remarks',
+        type: 'announcement',
+        room: 'Main Auditorium',
+        speaker: 'ATNS Board',
+        description: 'ATNS Board closing remarks',
+        favorite: false
+      },
+      {
+        id: 52,
+        time: '5:00 PM - 6:30 PM',
+        title: 'Optional Happy Hour Gathering',
         type: 'social',
-        room: 'Main Lobby',
+        room: 'Reception Area',
         speaker: null,
-        description: 'Final networking and conference conclusion'
+        description: 'Final networking gathering',
+        favorite: false
       }
     ]
   }
@@ -302,11 +570,11 @@ const speakers = [
 ]
 
 const currentSession = {
-  title: "Understanding Pain Neuroplasticity",
-  speaker: "Dr. David Schechter",
-  room: "Conference Room A",
+  title: "Session #1: Hand to Heart: An Opportunity for Healing with Neuroplastic Symptoms",
+  speaker: "Monica Fitzgerald, PhD + Rita Gupta, DO MPA",
+  room: "Main Auditorium",
   timeRemaining: "23 minutes",
-  nextSession: "Coffee Break & Networking"
+  nextSession: "Break"
 }
 
 const getSessionTypeColor = (type: string) => {
@@ -319,6 +587,9 @@ const getSessionTypeColor = (type: string) => {
     case 'social': return 'bg-pink-100 text-pink-800'
     case 'roundtable': return 'bg-yellow-100 text-yellow-800'
     case 'breakout': return 'bg-indigo-100 text-indigo-800'
+    case 'concurrent': return 'bg-teal-100 text-teal-800'
+    case 'announcement': return 'bg-red-100 text-red-800'
+    case 'registration': return 'bg-slate-100 text-slate-800'
     default: return 'bg-gray-100 text-gray-800'
   }
 }
