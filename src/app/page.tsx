@@ -888,6 +888,125 @@ This session is a chance to explore how bringing more body awareness, breath and
 • Describe the functions of the peri-aqueductal gray region (PAG)
 • Expound a novel theory on the role of the PAG in POTS
 • Review data on a novel treatment based on this perspective`
+  },
+  '20': {
+    summary: `Healing neuroplastic pain and symptoms involves "buy-in" on the part of the patient regarding the nature of the diagnosis and origin of symptoms. In a healthcare system and culture largely focused on a reductionist, structural, tissue-based diagnostic framework, it can be difficult for frontline health care providers to broach these concepts with patients who are not initially expecting it. These presentations will discuss an "in the trenches" clinicians' evolution of how they have learned to work with patients to introduce the concepts integral to a neuroplastic pain and symptom diagnosis and treatment approach from their clinical positions within their respective health systems. We will discuss practical approaches to assessing readiness for change and engaging with patients on a path of healing and recovery from neuroplastic pain and symptoms.`,
+    learningObjectives: `• Understand the role of patient attribution and expectation in neuroplastic pain and symptom presentations
+• Explore techniques that can help illuminate patients' beliefs and readiness for change
+• Learn strategies and practical tools for engaging with patients to build an understanding of the important neuroscience concepts, toward a more integrated, mind-body approach
+• Examine potential opportunities and methods for introducing pain neuroscience education and a neuroplastic treatment approach in healthcare systems`
+  },
+  '21': {
+    summary: `While initially the effectiveness of EMDR therapy was often questioned, after over 30 years of research including over 40 RCTs, EMDR therapy is now deemed evidence-based and recommended by many bodies such as WHO, DoD, NICE, Cochran, etc. EMDR therapy also has research to support its use with many populations and diagnoses (not just PTSD), including chronic pain and illness. This workshop will provide an introduction to this very effective therapy.`,
+    learningObjectives: `• Participants will be able to name the 8 phases and three prongs of EMDR therapy
+• Participants will be able to describe the breadth of research on this therapy
+• Participants will be able to use at least one EMDR resource`
+  },
+  '22': {
+    summary: `Michael will expose an area of neuroplastic symptoms which can be uncomfortable to talk about. He'll cover specifics of common pelvic conditions like premature ejaculation, erectile dysfunction, hard flaccid, and pelvic floor dysfunction; along with some useful pointers and experiential practices that help free up symptoms in the root region.`,
+    learningObjectives: `• Learn about often ignored pelvic and sexual dysfunction conditions–and how to help men with them
+• Helping your "hard cases" to uncover their root causes, even if they have seemingly tried everything to heal
+• Experientially practice somatic techniques for hearing the "message" of our symptoms`
+  },
+  '24': {
+    summary: `Traditional physical therapy often centers on diagnosis, biomechanics, and symptom management. But for the increasing number of patients with chronic pain, fatigue, long haul COVID, and other neuroplastic conditions, this externalized, symptom-focused approach can fall short—and sometimes do harm. This presentation reframes movement therapy through a mind-body neuroplastic lens, emphasizing the role of the nervous system, lived experience, and the impact of fear and safety on how people move. Attendees will learn how to assess and guide patients in a way that reduces guarding, bracing, and pain anticipation—helping them shift from fear-based movement into freedom and trust. Practical, accessible tools will be shared that clinicians can begin using immediately, no matter their discipline.`,
+    learningObjectives: `• Understand the nocebo effect: Explore how language, imaging, and over-pathologizing can reinforce fear and inhibit healing—and how to give patients the "green light" to move
+• Assess movement through a nervous system lens: Learn simple ways to recognize fear-based movement patterns (bracing, guarding, etc.) and guide patients without overcomplicating the process
+• Apply the Twin Peaks Model: Understand how to dose movement intensity to desensitize the nervous system and recognize the difference between a therapeutic flare-up and harm
+• Shift the energy of movement: Practice guiding patients into "light, loose, and easy" movement through visualization, cues of safety, and a focus on nervous system regulation rather than perfection. Incorporate activities that bring them joy`
+  },
+  '25': {
+    summary: `Chronic Lyme disease and mold toxicity are increasingly common diagnoses for patients experiencing persistent, debilitating symptoms such as fatigue, brain fog, anxiety, pain, dizziness, headaches, and heightened chemical or environmental sensitivities. While these symptom patterns are very real, the underlying mechanisms behind them remain complex and often misunderstood. This presentation explores the current state of the science surrounding these conditions and highlights the growing evidence that many symptoms may be best understood through the lens of neuroplasticity — as brain- and nervous system-based processes rather than signs of ongoing infection or toxic exposure. Attendees will leave with tools to support patients in a compassionate and evidence-based way, grounded in neuroscience and the principles of neuroplastic healing.`,
+    learningObjectives: `• Examine the current scientific literature on chronic Lyme disease and mold-related illness, including areas of consensus and controversy
+• Explore how neuroplastic mechanisms may play a central role in chronic symptoms often attributed to infection or toxicity
+• Identify symptom patterns and patient narratives that may suggest a neuroplastic rather than biomedical etiology
+• Learn how to compassionately introduce a brain-based healing model to patients with longstanding illness narratives`
+  },
+  '26': {
+    summary: `In this workshop, we will teach how to conduct several key techniques of EAET for chronic pain and other somatic symptoms. Using videos, demonstrations, and/or experiential exercises, this workshop will help attendees learn how to link emotional patterns to pain symptoms, facilitate the experiencing and expression of adaptive feelings, and recognize and work with defenses.`,
+    learningObjectives: `Attendees will learn to:
+• Link emotional processes to somatic experiences, including pain
+• Recognize and challenge defenses that block emotional experience
+• Facilitate the activation and expression of avoided emotions`
+  },
+  '27': {
+    summary: `The brain and nervous system is a phenomenon of the feeling body as much as it is the thinking mind. John Sarno observed that TMS frequently presented itself in individuals that repressed emotions (anger in particular) and that for patients where psychoeducation alone was ineffective, going deeper into feelings was required. In this workshop, we will guide participants into directly accessing their felt sense and the underlying sensations, emotions and energetic charge that often underlies symptoms. Merging methods from multiple lineages of bodywork as well as Peter Levine's Somatic Experiencing, participants will leave the workshop with a new dimension and depth of access to their nervous system through their body.`,
+    learningObjectives: `• Develop rapid access to the felt sense
+• Become aware of nervous system states through the body
+• Identify symptom presentations with underlying emotional states`
+  },
+  '29': {
+    summary: `This experiential presentation will introduce the concept of "internal and external safety" in the context of relationships. Using this to create a pathway out of the pattern of physiological and psychological symptoms in which patients get stuck. Participants will be invited to deepen their understanding of safety through the practice of some simple exercises that can be readily implemented in their work settings and personal lives. Jointly bringing 40 years of clinical experience in working with neuroplastic symptoms, Movement & Non-Verbal Communication Lecturer Mags Clark-Smith, M.A. and Psychologist Jennifer Franklin, PhD, have developed this new framework for understanding how to help patients to have felt-sense of safety.`,
+    learningObjectives: `• Distinguish between internal and external safety
+• Develop greater attunement to the relational dynamics between patient and practitioner
+• Apply experiential methods to deepen connection with oneself and others by focusing on increasing a felt-sense of safety in the here and now
+• Refine somatic, affective, attunement, compassion, presence, and relational skills`
+  },
+  '30': {
+    summary: `This session is divided into two parts. First, you'll be guided through key studies on Brain-Mind-Body (BMB) interactions and self-compassion, helping you support patients in understanding how their physical symptoms can be influenced by these approaches. Then, in an interactive session, you'll learn and practice LP tools to develop self-compassion—skills that can benefit both your own well-being and your patients' healing.`,
+    learningObjectives: `• Easily reference key research on how Brain-Mind-Body (BMB) interactions and self-compassion influence physical symptoms
+• Enhance your ability to explain these concepts to patients in a way that fosters hope, understanding, and active participation in their care
+• Apply practical LP tools to cultivate self-compassion, supporting both your own resilience and your patients' capacity to resolve chronic symptoms`
+  },
+  '31': {
+    summary: `Many clients reach a point where their progress in treatment stalls. This highly interactive seminar is facilitated by a psychologist and a physician who have long experience with this situation. Cases submitted in advance by attendees will be discussed, and the issues that are common in these patients and how they can be successfully addressed will be highlighted.`,
+    learningObjectives: `• Participants will be able to identify the psychosocial issues that are often unrecognized by the client that impair their progress in treatment
+• Participants will be able to apply techniques to help the client recognize the problems that are impeding their progress
+• Participants will be able to recognize techniques that can help client overcome the stresses, traumas, or emotions that lead to persistence of neuroplastic pain or illness`
+  },
+  '32': {
+    summary: `Chronic fatigue can be as debilitating as chronic pain or any other neuroplastic symptom. We'll explore science and stories to decode fatigue, exhaustion, weakness, post-exertional malaise, brain fog and related symptom expressions. Becca Kennedy, MD will discuss scientific studies, her experience treating patients at the Long COVID clinic at Kaiser Permanente Northwest, and her own bout with fatigue. Rebecca Tolin will share her dramatic recovery from 13 years of ME/CFS, and stories from clients she's assisted as a mind-body coach. They'll discuss how to use neuroplastic recovery strategies with patients who haven't been able to work or exercise for years or decades.`,
+    learningObjectives: `• Understand why it's important to correct unproven medical theories for this population of patients
+• Explain how fatigue is a warning signal from the brain, and how post-exertional malaise becomes a conditioned response
+• Help patients and clients discern when to challenge and when to soothe, especially when they fear PEM
+• Hear case studies of patients who have gone from being bed bound or homebound to living full, active lives`
+  },
+  '44': {
+    summary: `In her presentation, Marjon Oomens will share how the Emovere Foundation is building a grassroots movement in the Netherlands to contribute to a paradigm shift – both in healthcare and in how society views health and well-being, opportunities for recovery and for proactive health: applying mind body principles early on to prevent symptoms from becoming chronic conditions. She will share key success factors and valuable lessons learned along the way. After this introduction, an interactive discussion will follow to share experiences and best practices in different countries to stimulate ideas, learn from each other and explore how we can build the movement together internationally to shift the paradigm.`,
+    learningObjectives: `• Understand key success factors and lessons learned from a Dutch example
+• Learn from each other, share best practices and ideas from different viewpoints and countries
+• Exchange ideas on proactive health: how can we inspire people to apply mind body principles early on to prevent symptoms from becoming chronic conditions
+• Explore how can we strengthen each other and work together to shift the paradigm`
+  },
+  '45': {
+    summary: `This presentation explores the shared neurobiological and psychological mechanisms underlying trauma, addiction, and chronic pain. Emphasizing the role of the autonomic nervous system, emotional suppression, and maladaptive neuroplasticity, it introduces a psychophysiologic model that reframes these conditions as interconnected expressions of dysregulation. Evidence-based interventions such as Pain Reprocessing Therapy, Acceptance and Commitment Therapy, and Internal Family System will be discussed to support nervous system regulation and emotional integration. Attendees will gain practical insights into treating complex pain through a trauma-informed lens.`,
+    learningObjectives: `• Define the interrelated mechanisms of trauma, addiction, and chronic pain through the lens of psychophysiologic disorders, including the roles of dysregulated stress response systems and neuroplastic changes in the brain
+• Explain the role of the autonomic nervous system (ANS)—particularly through the framework of Theory of Constructed Emotion (TCE)
+• Demonstrate the 3Ns, a modified version of Somatic Tracking to instil physiological and psychological safety cues for complex clinical presentations in service of repairing the nervous system`
+  },
+  '46': {
+    summary: `This presentation will review of the role of emotions in the etiology of PNEA, including the mechanisms through which activation of previously buried emotions can trigger PNEA. We will also show how experiential dynamic therapy (e.g., ISTDP) can help patients discover, face, and experientially process the push-pull of buried conflictual emotions that had previously been skated over, brushed aside, or otherwise defended against. As buried emotions are released and metabolized via the affective channel, they no longer get shunted to the somatic channel, enabling somatic symptoms such as PNEA to resolve.`,
+    learningObjectives: `• Describe a key dynamic in the etiology of PNEA relating to the blockage of affective experience
+• Describe the 3 key aspects of emotional experience
+• Describe the 4 somatic pathways of anxiety and how they relate to somatic symptoms`
+  },
+  '47': {
+    summary: `In this presentation, I'll introduce a framework for understanding how and why, to the best of our current knowledge, that psychedelic medicines may play a role in neuroplastic symptom recovery. In unpacking some of the foundational neuroscience principles that underpin the development of neuroplastic symptoms, I'll situate the psychedelic paradigm squarely within the purview of enhancing neuroplasticity, applications in autonomic neuroscience, and expanding the brain's predictive and inferential capacities to break away from old and construct new physical and emotional experiences. I will use both open source and clinical data review as well as collective and personal anecdotal experience to describe how 3 commonly used medicines - ketamine, MDMA, and psilocybin - may serve as leading candidates for further exploration. Finally, I'll relate all of this to a world in which deepening our personal and communal experience of connection, power, meaning, play, and rest can help us transcend our private and fixed states of threat and move us to an internalized, interdependent state of safety, thereby facilitating change and growth in our brains and beyond.`,
+    learningObjectives: `• Understand why and how psychedelic medicines and experiences of non-ordinary states of consciousness can be useful tools within the domains of neuroplasticity. predictive processing, threat physiology, and emotion in fostering an effective & therapeutic path in the context of neuroplastic symptom recovery
+• Be able to describe 3 of the most common medicines used in psychedelic assisted therapies for treating neuroplastic conditions
+• Have a cursory understanding of the literature & data that exists on these medicines and know where to find more information
+• Have a schema for situating the utility of psychedelic science and neuroplastic medicine within the larger framework of holistic and transcendental experience, theoretically, clinically, personally, and communally`
+  },
+  '49': {
+    summary: `In this presentation, we will provide education on sensitization trauma and medical trauma. Sensitization trauma occurs when an individual experiences high, prolonged nervous system dysregulation during the onset or progression of chronic pain or symptom. Similarly, medical trauma can occur when individuals endure confusion, varied opinions, frightening procedures and/or messages of invalidation while accessing medical care. We will discuss the importance of recognizing and treating these particular forms of trauma, which can create barriers to recovery during the psychological treatment of neuroplastic pain and symptoms. Along with education, the presentation will outline a somatic process for treating these forms of trauma, including a live demonstration.`,
+    learningObjectives: `• Understand the signs of sensitization and medical trauma
+• Learn how sensitization and medical trauma can slow or limit recovery from chronic neuroplastic pain/symptoms
+• Learn a process for somatically addressing sensitization and medical trauma`
+  },
+  '50': {
+    summary: `Weight stigma/anti-fat bias is pervasive in modern society and exists within individuals, families, institutions and society, creating a significant impact on the health of people in larger bodies. Oftentimes, body size is identified as a cause of or contributor to chronic symptoms such as pain, when in reality these symptoms are neuroplastic. Weight stigma can itself be a significant factor in the development and maintenance of neuroplastic symptoms. Clients and patients being treated for neuroplastic symptoms will benefit from clinicians using a Health at Every Size, weight-inclusive framework to reduce stigma and improve outcomes.`,
+    learningObjectives: `• Participants will increase awareness of the general role of weight stigma/bias on health and mental health
+• Participants will learn about how weight stigma influences the development and maintenance of neuroplastic symptoms
+• Participants will learn principles of Health at Every Size/weight-inclusive care and how to apply this framework to support patient/client recovery from neuroplastic symptoms`
+  },
+  '51': {
+    summary: `Tinnitus and Sound Sensitivity (Hyperacusis and Misophonia): This presentation will discuss how to identify/rule out concerning medical issues that might be underlying tinnitus/sound sensitivity and how much of these conditions are neuroplastic. Will explain how tinnitus and pain are essentially the same thing, both are danger alarms (tinnitus is literally an alarm inside us). Review how to adapt current tools used for pain for tinnitus and sound sensitivity (PRT tools such as somatic tracking, avoidance, corrective experiences, etc).
+
+Dizziness: In this section of the presentation, you will learn about common neuroplastic dizziness syndromes and how to educate patients with dizziness effectively. You will also learn the key points that make working with dizziness different from working with pain and how to modify your current repertoire of tools for dizziness.`,
+    learningObjectives: `• Learners will be able to identify/rule out concerning medical issues that might be underlying tinnitus and sound sensitivity
+• Learners will be familiarized with common dizziness syndromes that are neuroplastic
+• Learners will be able to identify how working with dizziness, tinnitus and sound sensitivity differs from working with pain and other sensations
+• Tips for diagnosis and treatment of neuroplastic dizziness & common characteristics`
   }
 }
 
