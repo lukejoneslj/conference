@@ -478,6 +478,119 @@ const scheduleData = {
       },
       {
         id: 45,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10B: Targeting the Root Causes of Chronic Pain in Emotional Awareness and Expression Therapy',
+        type: 'concurrent',
+        room: 'L130',
+        speaker: 'Shoshana Krohner, PhD + Mark Lumley, PhD',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 40,
+        registered: 0
+      },
+      {
+        id: 46,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10C: Introduction to EMDR therapy, Is it really that good?',
+        type: 'concurrent',
+        room: 'F168',
+        speaker: 'Michelle Gottlieb, Psy.D., MFT, LPCC',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 30,
+        registered: 0
+      },
+      {
+        id: 47,
+        time: '10:15 AM - 11:15 AM',
+        title: 'Session #10D: Brain-Mind-Body (BMB) Takeaways from 25 years of the Lightning Process (LP)',
+        type: 'concurrent',
+        room: 'F169',
+        speaker: 'Phil Parker, PhD, DO, Dip E Hyp Psych',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 30,
+        registered: 0
+      },
+      {
+        id: 48,
+        time: '11:15 AM - 11:30 AM',
+        title: 'Break',
+        type: 'break',
+        room: '',
+        speaker: null,
+        description: '15 minute break',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 49,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11A: Psychedelic Medicine: from Neuroplasticity to Transcendance - An Overview',
+        type: 'concurrent',
+        room: 'Levin Hall',
+        speaker: 'Matt McClanahan, DO, MA',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 50,
+        registered: 0
+      },
+      {
+        id: 50,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11B: Treating the Trauma Caused by Chronic Pain & Symptoms',
+        type: 'concurrent',
+        room: 'L130',
+        speaker: 'Alex Klassen, MSW, RSW + Tanner Murtagh MSW, RSW',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 40,
+        registered: 0
+      },
+      {
+        id: 51,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11C: Embody Your Message',
+        type: 'concurrent',
+        room: 'F168',
+        speaker: 'Camille Thoman',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 30,
+        registered: 0
+      },
+      {
+        id: 52,
+        time: '11:30 AM - 12:30 PM',
+        title: 'Session #11D: From Fear to Freedom: Teaching Patients to Trust Their Bodies Again',
+        type: 'concurrent',
+        room: 'F169',
+        speaker: 'Leonida Tansinsin, MPT',
+        description: '50 minutes presentation + 10 minute Q&A',
+        favorite: false,
+        isBreakout: true,
+        capacity: 30,
+        registered: 0
+      },
+      {
+        id: 53,
+        time: '12:30 PM - 1:45 PM',
+        title: 'Lunch Break with Table Discussions',
+        type: 'social',
+        room: 'Gym',
+        speaker: null,
+        description: 'Lunch and table discussions',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 54,
         time: '1:45 PM - 2:45 PM',
         title: 'Session #12: Stigma as a Stressor: How Anti-Fat Bias Influences Neuroplastic Symptoms',
         type: 'session',
@@ -488,7 +601,18 @@ const scheduleData = {
         isBreakout: false
       },
       {
-        id: 46,
+        id: 55,
+        time: '2:45 PM - 3:00 PM',
+        title: 'Break',
+        type: 'break',
+        room: '',
+        speaker: null,
+        description: '15 minute break',
+        favorite: false,
+        isBreakout: false
+      },
+      {
+        id: 56,
         time: '3:00 PM - 4:00 PM',
         title: 'Session #13: Neuroplastic Symptoms of the Ear: Tinnitus, Sound Sensitivity and Dizziness',
         type: 'session',
@@ -499,7 +623,7 @@ const scheduleData = {
         isBreakout: false
       },
       {
-        id: 47,
+        id: 57,
         time: '4:00 PM',
         title: 'David Clarke Wrap up, presidential address',
         type: 'keynote',
@@ -510,7 +634,7 @@ const scheduleData = {
         isBreakout: false
       },
       {
-        id: 48,
+        id: 58,
         time: '4:30 PM',
         title: 'Closing Remarks + Zumba',
         type: 'social',
@@ -521,7 +645,7 @@ const scheduleData = {
         isBreakout: false
       },
       {
-        id: 49,
+        id: 59,
         time: '5:00 PM - 6:30 PM',
         title: 'Happy Hour Gathering',
         type: 'social',
