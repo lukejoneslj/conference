@@ -1270,11 +1270,185 @@ export default function ConferenceHub() {
           {/* Schedule Tab */}
           <TabsContent value="schedule" className="mt-6">
             <Tabs defaultValue="day1" className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger value="my-schedule">
+                  <Bookmark className="w-4 h-4 mr-2" />
+                  My Schedule
+                </TabsTrigger>
                 <TabsTrigger value="day1">Day 1 (Sunday)</TabsTrigger>
                 <TabsTrigger value="day2">Day 2 (Monday)</TabsTrigger>
                 <TabsTrigger value="day3">Day 3 (Tuesday)</TabsTrigger>
               </TabsList>
+
+              {/* My Schedule Tab */}
+              <TabsContent value="my-schedule" className="mt-6">
+                {user ? (
+                  <div className="space-y-6">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Bookmark className="w-5 h-5" />
+                          My Registered Sessions
+                        </CardTitle>
+                        <CardDescription>
+                          Sessions you've registered for across all days
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        {user.registeredSessions.length === 0 ? (
+                          <div className="text-center py-8 text-gray-500">
+                            <Calendar className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                            <p>You haven't registered for any sessions yet.</p>
+                            <p className="text-sm mt-1">Click on sessions in the schedule to register!</p>
+                          </div>
+                        ) : (
+                          <div className="space-y-6">
+                            {/* Day 1 Sessions */}
+                            {(() => {
+                              const day1Sessions = user.registeredSessions
+                                .map(id => scheduleData.day1.sessions.find(s => s.id.toString() === id))
+                                .filter(session => session !== undefined)
+                              
+                              return day1Sessions.length > 0 && (
+                                <div key="day1-my">
+                                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                                    <Calendar className="w-5 h-5" />
+                                    Sunday, September 28, 2025
+                                  </h3>
+                                  <div className="space-y-3">
+                                    {day1Sessions.map((session) => session && (
+                                      <div key={session.id} className="border rounded-lg p-4 bg-green-50 border-green-200">
+                                        <div className="flex items-start justify-between">
+                                          <div className="flex-1">
+                                            <div className="flex items-center gap-4 mb-2">
+                                              <span className="text-sm text-gray-600 flex items-center gap-1">
+                                                <Clock className="w-4 h-4" />
+                                                {session.time}
+                                              </span>
+                                              {session.room && (
+                                                <span className="text-sm text-gray-600 flex items-center gap-1">
+                                                  <MapPin className="w-4 h-4" />
+                                                  {session.room}
+                                                </span>
+                                              )}
+                                            </div>
+                                            <h4 className="font-semibold text-gray-900 mb-1">{session.title}</h4>
+                                            {session.speaker && (
+                                              <p className="text-sm text-blue-600">{session.speaker}</p>
+                                            )}
+                                          </div>
+                                          <Badge className="bg-green-100 text-green-800">Registered</Badge>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )
+                            })()}
+
+                            {/* Day 2 Sessions */}
+                            {(() => {
+                              const day2Sessions = user.registeredSessions
+                                .map(id => scheduleData.day2.sessions.find(s => s.id.toString() === id))
+                                .filter(session => session !== undefined)
+                              
+                              return day2Sessions.length > 0 && (
+                                <div key="day2-my">
+                                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                                    <Calendar className="w-5 h-5" />
+                                    Monday, September 29, 2025
+                                  </h3>
+                                  <div className="space-y-3">
+                                    {day2Sessions.map((session) => session && (
+                                      <div key={session.id} className="border rounded-lg p-4 bg-green-50 border-green-200">
+                                        <div className="flex items-start justify-between">
+                                          <div className="flex-1">
+                                            <div className="flex items-center gap-4 mb-2">
+                                              <span className="text-sm text-gray-600 flex items-center gap-1">
+                                                <Clock className="w-4 h-4" />
+                                                {session.time}
+                                              </span>
+                                              {session.room && (
+                                                <span className="text-sm text-gray-600 flex items-center gap-1">
+                                                  <MapPin className="w-4 h-4" />
+                                                  {session.room}
+                                                </span>
+                                              )}
+                                            </div>
+                                            <h4 className="font-semibold text-gray-900 mb-1">{session.title}</h4>
+                                            {session.speaker && (
+                                              <p className="text-sm text-blue-600">{session.speaker}</p>
+                                            )}
+                                          </div>
+                                          <Badge className="bg-green-100 text-green-800">Registered</Badge>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )
+                            })()}
+
+                            {/* Day 3 Sessions */}
+                            {(() => {
+                              const day3Sessions = user.registeredSessions
+                                .map(id => scheduleData.day3.sessions.find(s => s.id.toString() === id))
+                                .filter(session => session !== undefined)
+                              
+                              return day3Sessions.length > 0 && (
+                                <div key="day3-my">
+                                  <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                                    <Calendar className="w-5 h-5" />
+                                    Tuesday, September 30, 2025
+                                  </h3>
+                                  <div className="space-y-3">
+                                    {day3Sessions.map((session) => session && (
+                                      <div key={session.id} className="border rounded-lg p-4 bg-green-50 border-green-200">
+                                        <div className="flex items-start justify-between">
+                                          <div className="flex-1">
+                                            <div className="flex items-center gap-4 mb-2">
+                                              <span className="text-sm text-gray-600 flex items-center gap-1">
+                                                <Clock className="w-4 h-4" />
+                                                {session.time}
+                                              </span>
+                                              {session.room && (
+                                                <span className="text-sm text-gray-600 flex items-center gap-1">
+                                                  <MapPin className="w-4 h-4" />
+                                                  {session.room}
+                                                </span>
+                                              )}
+                                            </div>
+                                            <h4 className="font-semibold text-gray-900 mb-1">{session.title}</h4>
+                                            {session.speaker && (
+                                              <p className="text-sm text-blue-600">{session.speaker}</p>
+                                            )}
+                                          </div>
+                                          <Badge className="bg-green-100 text-green-800">Registered</Badge>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )
+                            })()}
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </div>
+                ) : (
+                  <Card>
+                    <CardContent className="text-center py-8">
+                      <User className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                      <p className="text-gray-500 mb-4">Please sign in to view your registered sessions.</p>
+                      <Button onClick={() => setShowSignIn(true)}>
+                        <UserPlus className="w-4 h-4 mr-2" />
+                        Sign In
+                      </Button>
+                    </CardContent>
+                  </Card>
+                )}
+              </TabsContent>
 
               {Object.entries(scheduleData).map(([day, data]) => (
                 <TabsContent key={day} value={day} className="mt-6">
