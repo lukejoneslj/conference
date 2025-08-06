@@ -12,7 +12,7 @@ import { Combobox } from '@/components/ui/combobox'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { 
   Calendar, MapPin, Clock, Users, Search, 
-  Heart, Share2, ChevronRight, 
+  Heart, ChevronRight, 
   Bookmark, Mic, FileText,
   UserPlus, LogOut, Bell, BellOff, MessageSquare,
   Map, Utensils, CheckCircle, XCircle,
@@ -1507,12 +1507,6 @@ export default function ConferenceHub() {
                                 {session.favorite && (
                                   <Heart className="w-5 h-5 text-red-500 fill-current" />
                                 )}
-                                <Button size="sm" variant="outline" onClick={(e) => e.stopPropagation()}>
-                                  <Bookmark className="w-4 h-4" />
-                                </Button>
-                                <Button size="sm" variant="outline" onClick={(e) => e.stopPropagation()}>
-                                  <Share2 className="w-4 h-4" />
-                                </Button>
                               </div>
                             </div>
                           </div>
